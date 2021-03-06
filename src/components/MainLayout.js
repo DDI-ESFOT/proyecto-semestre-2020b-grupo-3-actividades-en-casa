@@ -1,19 +1,39 @@
 import React from "react";
-import { Layout, Menu, Row, Col, Image } from "antd";
-import MainMenu from "./MainMenu";
-import epn from '../images/LOGO_EPN.jpg';
-import "../styles/layout.css";
-import { FacebookOutlined, InstagramOutlined, GithubOutlined, MailOutlined, WhatsAppOutlined } from '@ant-design/icons';
 import {
-  UserOutlined,
-  NotificationOutlined,
-  LaptopOutlined,
+    Button,
+    Row,
+    Col,
+    Layout,
+    Space,
+    Modal,
+    Input,
+    Typography,
+    Form,
+    Checkbox,
+    Menu
+} from "antd";
+import MainMenu from "./MainMenu";
+
+import {
+    InstagramOutlined,
+    FacebookOutlined,
+    YoutubeOutlined,
+    TwitterOutlined,
+    MailOutlined, WhatsAppOutlined
 } from "@ant-design/icons";
+import imgheader from "../images/imgheader.jpg";
+import imgb1 from "../images/imgbody1.jpg";
+import imgb2 from "../images/imgbody2.jpg";
+import imgb3 from "../images/imgbody3.jpg";
+import foot from "../images/imgfoot.jpg";
+import "../styles/WFirst.css";
 
 const { SubMenu } = Menu;
 const { Header, Content, Footer, Sider } = Layout;
 
 const MainLayout = ({ children }) => {
+
+
   return (
     <Layout className="layout">
       <Header>
@@ -30,12 +50,17 @@ const MainLayout = ({ children }) => {
 
         <Footer className='footer'>
             <Row>
-                <Col xs={ { span: 24 } } md={ 8 } className='logo-blanco'>
 
-                    <img className='imagen1' src={epn} />
+                <Row span={18} id="foot1">
+                    <Col span={5} type="flex" align="left">
+                        <img src={foot} alt="foot" width="50" height="75" />
+                    </Col>
+                    <Col span={18} id="foot1">
+                        <br></br>
+                        <p>ESCUELA POLITECNICA NACIONAL</p>
+                    </Col>
+                </Row>
 
-
-                </Col>
 
                 <Col xs={ {
                     span: 24,
@@ -48,7 +73,9 @@ const MainLayout = ({ children }) => {
                      className='logo-menta'>
 
                     <p><strong> ¿Quiénes somos?</strong></p>
-                    <p>Venimos ayudarte hacer tu vida mas ordenada de forma divertida</p>
+                    <p>Llegamos hacer que tu vida cotidiana la manejes de forma divertida formando
+                    valores y responsabilidades a cada miembro de tu nucleo familiar, somos
+                    un equipo que pensamos en la familia y miramos como ayudarlos a tener una mayor comunicación</p>
 
                     <a href='https://grupomenta.com' rel='noopener noreferrer' target='_blank'>
 
@@ -78,7 +105,7 @@ const MainLayout = ({ children }) => {
 
                 </Col>
 
-                <Col xs={ 24 } md={ 8 } className='logos-social'>
+                <Col xs={ 24 } md={ 24 } className='logos-social'>
                     <strong>Síguenos en:</strong>
                     <a href='https://www.facebook.com'
                        target='_blank'
@@ -92,6 +119,9 @@ const MainLayout = ({ children }) => {
 
                     <a href='https://www.instagram.com' target='_blank' rel='noopener noreferrer'>
                         <InstagramOutlined />
+                    </a>
+                    <a href='https://twitter.com' target='_blank' rel='noopener noreferrer'>
+                        <TwitterOutlined />
                     </a>
                 </Col>
             </Row>

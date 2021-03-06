@@ -3,7 +3,7 @@ import {Row, Col, Typography, Input, Button, Space, Layout, Modal, Menu} from 'a
 import ActivitiesList from '../components/ActivitiesList';
 import {Link} from "react-router-dom";
 import Routes from "../constants/routes";
-
+import "../styles/home.css";
 const ActivitiesPage = () => {
 
   const [isModalVisiblePrf, setIsModalVisiblePrf] = useState(false);
@@ -39,7 +39,7 @@ const ActivitiesPage = () => {
 
 
   return (
-      <div>
+      <div className='espacio2'>
         <Row>
           <Col span={8}>
             <Row>

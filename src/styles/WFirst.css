@@ -1,0 +1,40 @@
+
+.layout{
+  width: 100%;
+}
+
+.main-header h1{
+  color:aliceblue;
+
+}
+
+.main-content{
+  width: 100%;
+  padding: 0px 0px;
+}
+#fil1{
+  background-color: #ADB896;
+}
+
+#fil1 Button {
+  background-color: #A4A4A4;
+  border-color: #848484;
+    color:white;
+    border-radius: 10px;
+}
+
+#foot1 {
+  color: antiquewhite;
+}
+
+
+.footer {
+  background-color: #47525E;
+  padding: 30px 20px;
+  min-height: 200px;
+  color: #ffffff;
+}
+.logos-social {
+  text-align: right;
+  margin-top: 0px;
+}
