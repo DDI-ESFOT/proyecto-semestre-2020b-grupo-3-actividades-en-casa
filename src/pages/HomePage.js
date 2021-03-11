@@ -175,27 +175,28 @@ const HomePage = () => {
                                                     onFinish={onFinish2}
                                                     onFinishFailed={onFinishFailed2}
                                                 >
-                                                    <Form.Item label="Nombres" name="UserNames">
-                                                        <Input />
+                                                    <Form.Item  name="UserNames">
+                                                        <Input placeholder="Nombres"></Input>
                                                     </Form.Item>
-                                                    <Form.Item label="Apellidos" name="UserLastNames">
-                                                        <Input />
+                                                    <Form.Item  name="UserLastNames">
+                                                        <Input placeholder="Apellidos"/>
                                                     </Form.Item>
 
                                                     <Form.Item
-                                                        label="Fecha Nacimiento"
+
                                                         name="UserDate"
                                                         rules={[
                                                             {
+
                                                                 required: true,
                                                                 message: "Ingresa una fecha valida!",
                                                             },
                                                         ]}
                                                     >
-                                                        <Input />
+                                                        <Input placeholder="Fecha Nacimiento"/>
                                                     </Form.Item>
                                                     <Form.Item
-                                                        label="E-mail"
+
                                                         name="UserEmail"
                                                         rules={[
                                                             {
@@ -204,10 +205,10 @@ const HomePage = () => {
                                                             },
                                                         ]}
                                                     >
-                                                        <Input />
+                                                        <Input placeholder="E-mail"/>
                                                     </Form.Item>
                                                     <Form.Item
-                                                        label="Clave"
+
                                                         name="password"
                                                         rules={[
                                                             {
@@ -216,10 +217,10 @@ const HomePage = () => {
                                                             },
                                                         ]}
                                                     >
-                                                        <Input.Password />
+                                                        <Input.Password placeholder="Clave"/>
                                                     </Form.Item>
                                                     <Form.Item
-                                                        label="Confirmar clave"
+
                                                         name="passwordConfirm"
                                                         rules={[
                                                             {
@@ -228,7 +229,7 @@ const HomePage = () => {
                                                             },
                                                         ]}
                                                     >
-                                                        <Input.Password />
+                                                        <Input.Password placeholder="Confirmar clave"/>
                                                     </Form.Item>
 
                                                     <Form.Item name="remember" valuePropName="checked">
