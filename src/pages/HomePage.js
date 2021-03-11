@@ -23,9 +23,16 @@ import imgb1 from "../images/imgbody1.jpg";
 import imgb2 from "../images/imgbody2.jpg";
 import imgb3 from "../images/imgbody3.jpg";
 import foot from "../images/imgfoot.jpg";
-
+import { Carousel } from 'antd';
 
 const HomePage = () => {
+    const contentStyle = {
+        height: '160px',
+        color: '#fff',
+        lineHeight: '160px',
+        textAlign: 'center',
+        background: '#364d79',
+      };
 
     const { Header, Content, Footer } = Layout;
     const [isModalVisible, setIsModalVisible] = useState(false);
@@ -249,18 +256,19 @@ const HomePage = () => {
                             </Col>
                         </Row>
                     </Col>
+                    
                     <Col span={11} type="flex" align="right">
                         <img src={imgheader} alt="header" width="400" height="200" />
                     </Col>
                 </Row>
                 <br></br>
-                <Row>
-                    <Col span={4}></Col>
-                    <Col span={20}>
+                <Carousel autoplay>
+                <Row style={contentStyle} >
+                    <Col>
                         <Row>
-                            <Col span={9}>
-                                <p>
-                                    <br></br>
+                            <Col span={3}></Col>
+                            <Col span={8}>
+                                <p id="par">
                                     <br></br>
                                     <br></br>
                                     Ayuda a fomentar que los hijos se conviertan en personas
@@ -269,23 +277,22 @@ const HomePage = () => {
                                     de forma desinteresada.
                                 </p>
                             </Col>
+                            <Col span={2}></Col>
                             <Col span={7}>
-                                <img src={imgb1} alt="header" width="425" height="227" />
+                                <img src={imgb1} alt="header" width="500" height="400" />
                             </Col>
                         </Row>
                     </Col>
                 </Row>
-                <br></br>
-                <Row>
-                    <Col span={4}></Col>
-                    <Col span={20}>
+                <Row style={contentStyle}>
+                    <Col>
                         <Row>
-                            <Col span={10}>
-                                <img src={imgb2} alt="header" width="425" height="227" />
+                            <Col span={3}></Col>
+                            <Col span={11}>
+                                <img src={imgb2} alt="header" width="450" height="400" />
                             </Col>
                             <Col span={8}>
-                                <p>
-                                    <br></br>
+                                <p id="par">
                                     <br></br>
                                     <br></br>
                                     Nuestro sitio web te brinda todo lo que necesitas para
@@ -297,14 +304,12 @@ const HomePage = () => {
                         </Row>
                     </Col>
                 </Row>
-                <br></br>
-                <Row>
-                    <Col span={4}></Col>
-                    <Col span={20}>
+                <Row style={contentStyle}>
+                    <Col>
                         <Row>
-                            <Col span={9}>
-                                <p>
-                                    <br></br>
+                        <Col span={3}></Col>
+                            <Col span={8}>
+                                <p id="par">
                                     <br></br>
                                     <br></br>
                                     Con nuestro sitio web podras tener la seguridad que las
@@ -313,16 +318,18 @@ const HomePage = () => {
                                     asegurar que todos reciban un labor coherente y justo.
                                 </p>
                             </Col>
+                            <Col span={2}></Col>
                             <Col span={7}>
-                                <img src={imgb3} alt="header" width="425" height="227" />
+                                <img src={imgb3} alt="header" width="500" height="400" />
                             </Col>
                         </Row>
                     </Col>
                 </Row>
+                </Carousel>
                 <br></br>
             </Content>
-
         </Layout>
+        
         </>
     );
 };
