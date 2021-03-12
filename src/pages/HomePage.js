@@ -6,6 +6,7 @@ import {
   YoutubeOutlined,
   TwitterOutlined,
 } from "@ant-design/icons";
+
 import {
   Button,
   Row,
@@ -19,6 +20,7 @@ import {
   Checkbox,
   Image,
 } from "antd";
+
 import imgheader from "../images/imgheader.jpg";
 import imgb1 from "../images/imgbody1.jpg";
 import imgb2 from "../images/imgbody2.jpg";
@@ -103,7 +105,7 @@ const HomePage = () => {
                     onOk={handleOk2}
                     onCancel={handleCancel2}
                   >
-                    <Title level={2} ype="flex" align="middle">
+                    <Title level={2} type="flex" align="middle">
                       INICIO DE SESIÓN{" "}
                     </Title>
                     <Row>
@@ -257,7 +259,7 @@ const HomePage = () => {
             </Col>
 
             <Col span={10} type="flex" align="right">
-              <img src={imgheader} alt="header" width="400" height="300" />
+              <img src={imgheader} alt="header" width="100%" height="100%" />
             </Col>
           </Row>
           <br></br>
@@ -267,7 +269,7 @@ const HomePage = () => {
               <Col>
                 <Row>
                   <Col span={3}></Col>
-                  <Col span={18}>
+                  <Col span={18} type="flex" align="middle">
                     <Image src={imgb1} alt="header" id="imge"/>
                   </Col>
                   <Col span={3}></Col>
@@ -293,7 +295,7 @@ const HomePage = () => {
               <Col>
                 <Row>
                   <Col span={3}></Col>
-                  <Col span={18}>
+                  <Col span={18} type="flex" align="middle">
                     <Image src={imgb2} alt="header"  id="imge"/>
                   </Col>
                   <Col span={3}></Col>
@@ -319,7 +321,7 @@ const HomePage = () => {
               <Col>
                 <Row>
                   <Col span={3}></Col>
-                  <Col span={18}>
+                  <Col span={18} type="flex" align="middle">
                     <Image src={imgb3} alt="header"  id="imge"/>
                   </Col>
                   <Col span={3}></Col>
