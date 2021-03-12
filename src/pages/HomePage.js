@@ -1,11 +1,5 @@
 import "../styles/WFirst.css";
 import React, { useState } from "react";
-import {
-  InstagramOutlined,
-  FacebookOutlined,
-  YoutubeOutlined,
-  TwitterOutlined,
-} from "@ant-design/icons";
 
 import {
   Button,
@@ -36,7 +30,7 @@ const HomePage = () => {
     background: "#364d79",
   };
 
-  const { Header, Content, Footer } = Layout;
+  const { Header, Content} = Layout;
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isModalVisible2, setIsModalVisible2] = useState(false);
   const { Title } = Typography;
