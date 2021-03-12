@@ -18,7 +18,7 @@
 }
 
 #fil1{
-  background-color: #17046d; opacity: 0.8;
+  background-color: #47525E; opacity: 0.8;
 }
 
 #fil1m{
@@ -26,10 +26,12 @@
 }
 
 #fil1 Button {
-  background-color: #536166;
+  background-color: #1890FF;
   border-color: #848484;
     color:#ffffff;
     border-radius: 10px;
+    font-size: 15;
+    font-weight: bolder;
 }
 
 #foot1 {
@@ -55,7 +57,7 @@
 }
 
 #imge {
-  border: 3px outset #4946ee;
+  border: 6px outset #fff;
 }
 
 #headt{

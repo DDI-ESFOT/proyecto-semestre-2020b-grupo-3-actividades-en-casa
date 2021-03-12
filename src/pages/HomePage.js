@@ -95,7 +95,7 @@ const HomePage = () => {
               <Row>
                 <Col span={12}>
                   <Button type="primary" onClick={showModal2}>
-                    Inciar Sesion
+                    Iniciar Sesión
                   </Button>
                   <Modal
                     title="ACTIVIDADES EN CASA"
@@ -104,7 +104,7 @@ const HomePage = () => {
                     onCancel={handleCancel2}
                   >
                     <Title level={2} ype="flex" align="middle">
-                      INICIO DE SESION{" "}
+                      INICIO DE SESIÓN{" "}
                     </Title>
                     <Row>
                       <Col span={6}></Col>
