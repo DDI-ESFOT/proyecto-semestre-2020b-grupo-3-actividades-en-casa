@@ -1,6 +1,8 @@
 import "../styles/WFirst.css";
 import React, { useState } from "react";
+
 import {
+
     UserOutlined,
     UserAddOutlined
 } from "@ant-design/icons";
@@ -16,15 +18,26 @@ import {
     Form,
     Checkbox,
     DatePicker
+
 } from "antd";
+
 import imgheader from "../images/imgheader.jpg";
 import imgb1 from "../images/imgbody1.jpg";
 import imgb2 from "../images/imgbody2.jpg";
 import imgb3 from "../images/imgbody3.jpg";
 
+import { Carousel } from "antd";
 
 
 const HomePage = () => {
+  const contentStyle = {
+    height: "160px",
+    color: "#fff",
+    lineHeight: "160px",
+    textAlign: "center",
+    background: "#364d79",
+  };
+
 
     const { Header, Content } = Layout;
     const [isModalVisible, setIsModalVisible] = useState(false);
@@ -35,40 +48,42 @@ const HomePage = () => {
         console.log("Success:", values);
     };
 
-    const onFinishFailed = (errorInfo) => {
-        console.log("Failed:", errorInfo);
-    };
 
-    const onFinish2 = (values) => {
-        console.log("Success:", values);
-    };
+  const onFinish = (values) => {
+    console.log("Success:", values);
+  };
 
-    const onFinishFailed2 = (errorInfo) => {
-        console.log("Failed:", errorInfo);
-    };
+  const onFinishFailed = (errorInfo) => {
+    console.log("Failed:", errorInfo);
+  };
 
-    const showModal = () => {
-        setIsModalVisible(true);
-    };
+  const onFinish2 = (values) => {
+    console.log("Success:", values);
+  };
 
-    const handleOk = () => {
-        setIsModalVisible(false);
-    };
+  const onFinishFailed2 = (errorInfo) => {
+    console.log("Failed:", errorInfo);
+  };
 
-    const handleCancel = () => {
-        setIsModalVisible(false);
-    };
-    const showModal2 = () => {
-        setIsModalVisible2(true);
-    };
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
 
-    const handleOk2 = () => {
-        setIsModalVisible2(false);
-    };
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
 
-    const handleCancel2 = () => {
-        setIsModalVisible2(false);
-    };
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+  const showModal2 = () => {
+    setIsModalVisible2(true);
+  };
+
+  const handleOk2 = () => {
+    setIsModalVisible2(false);
+  };
+
 
     function onChange(date, dateString) {
         console.log(date, dateString);
@@ -142,6 +157,12 @@ const HomePage = () => {
                                                             <Input.Password />
                                                         </Form.Item>
 
+  const handleCancel2 = () => {
+    setIsModalVisible2(false);
+  };
+
+ 
+
                                                         <Form.Item name="remember" valuePropName="checked">
                                                             <Checkbox>Recordarme</Checkbox>
                                                         </Form.Item>
@@ -151,7 +172,7 @@ const HomePage = () => {
                                                             <Button  id="but-mod" type="primary" htmlType="submit">
                                                                 Iniciar Sesión
                                                         </Button>
-                                                        </Form.Item>
+                                      </Form.Item>
                                                     </Form>
                                                 </Space>
                                             </Col>
@@ -330,6 +351,7 @@ const HomePage = () => {
             </Layout>
         </>
     );
+
 };
 
 export default HomePage;

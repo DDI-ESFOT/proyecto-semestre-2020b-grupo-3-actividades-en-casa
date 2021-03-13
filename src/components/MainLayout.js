@@ -3,20 +3,25 @@ import {
     Row,
     Col,
     Layout
+
 } from "antd";
+
 import MainMenu from "./MainMenu";
 
 import {
     InstagramOutlined,
     FacebookOutlined,
     TwitterOutlined,
-    MailOutlined, WhatsAppOutlined
+    MailOutlined, 
+    WhatsAppOutlined
 } from "@ant-design/icons";
 
 import foot from "../images/imgfoot.jpg";
 import "../styles/WFirst.css";
 
+
 const { Header, Content, Footer } = Layout;
+
 
 const MainLayout = ({ children }) => {
 
