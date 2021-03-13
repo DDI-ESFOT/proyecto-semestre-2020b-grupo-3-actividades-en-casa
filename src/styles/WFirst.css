@@ -1,4 +1,5 @@
 
+
 .layout{
   background-size: cover;
   background-position: 0 0;
@@ -50,21 +51,6 @@
   margin-top: 0px;
 }
 
-
-#mod-back {
-  background-color: #ADB896;
-}
-
-#mod-head{
-  background-color: #A4A4A4;
-}
-
-#but-mod {
-  background-color: #A4A4A4;
-  border-color: #848484;
-    color:white;
-    border-radius: 10px;
-}
 #par {
   font-size: x-large;
   color: #ffffff;
@@ -77,5 +63,4 @@
 
 #headt{
   color:#fff;
-
 }
