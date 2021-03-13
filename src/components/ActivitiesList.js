@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, Tag, Space , Button} from 'antd';
+import {Table} from 'antd';
 
 const ActivitiesList = () =>{
     const dataSource = [
@@ -66,7 +66,7 @@ const ActivitiesList = () =>{
     return (
 
         <div>
-            <Table dataSource={dataSource} columns={columns} />;
+            <Table dataSource={dataSource} columns={columns} />
 
         </div>
     );

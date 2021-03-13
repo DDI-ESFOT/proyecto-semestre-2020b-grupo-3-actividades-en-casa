@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Row, Col, Typography, Input, Button, Space, Layout, Modal, Menu} from 'antd';
+import {Row, Col, Typography, Input, Button, Space, Modal} from 'antd';
 import ActivitiesList from '../components/ActivitiesList';
 import {Link} from "react-router-dom";
 import Routes from "../constants/routes";
@@ -35,12 +35,10 @@ const ActivitiesPage = () => {
   };
 
   const {Title} = Typography;
-  const {Header, Content,Footer} = Layout;
-
-
+ 
   return (
-      <div className='espacio2'>
-        <Row>
+      <>
+        <Row id="espacio2">
           <Col span={8}>
             <Row>
               <Col span={6}></Col>
@@ -107,7 +105,7 @@ const ActivitiesPage = () => {
 
 
 <ActivitiesList/>
-      </div>
+      </>
   );
 };
 
