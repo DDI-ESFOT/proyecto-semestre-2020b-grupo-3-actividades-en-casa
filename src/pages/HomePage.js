@@ -198,9 +198,7 @@ const HomePage = () => {
                                 </Modal>
                             </Col>
                             <Col span={12}>
-                                <Button type="primary" onClick={showModal}>
-                                    Registrarse
-                                </Button>
+
                                 <Modal
                                     title="ACTIVIDADES EN CASA"
                                     visible={isModalVisible}
