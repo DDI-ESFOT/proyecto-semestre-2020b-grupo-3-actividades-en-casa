@@ -184,6 +184,99 @@ const HomePage = () => {
                               <Input />
                             </Form.Item>
 
+
+                                                    <Form.Item>
+                                                        <Button type="primary" htmlType="submit">
+                                                            Iniciar Sesión
+                                                        </Button>
+                                                    </Form.Item>
+                                                </Form>
+                                            </Space>
+                                        </Col>
+                                        <Col span={6}></Col>
+                                    </Row>
+                                </Modal>
+                            </Col>
+                            <Col span={12}>
+                                <Button type="primary" onClick={showModal}>
+                                    Registrarse
+                                </Button>
+                                <Modal
+                                    title="ACTIVIDADES EN CASA"
+                                    visible={isModalVisible}
+                                    onOk={handleOk}
+                                    onCancel={handleCancel}
+                                >
+                                    <Title level={2} ype="flex" align="middle">
+                                        REGISTRATE{" "}
+                                    </Title>
+                                    <Row>
+                                        <Col span={6}></Col>
+                                        <Col span={12} type="flex" align="middle">
+                                            <Space direction="vertical">
+                                                <Form
+                                                    name="basic"
+                                                    initialValues={{ remember: true }}
+                                                    onFinish={onFinish2}
+                                                    onFinishFailed={onFinishFailed2}
+                                                >
+                                                    <Form.Item  name="UserNames">
+                                                        <Input placeholder="Nombres"></Input>
+                                                    </Form.Item>
+                                                    <Form.Item  name="UserLastNames">
+                                                        <Input placeholder="Apellidos"/>
+                                                    </Form.Item>
+
+                                                    <Form.Item
+
+                                                        name="UserDate"
+                                                        rules={[
+                                                            {
+
+                                                                required: true,
+                                                                message: "Ingresa una fecha valida!",
+                                                            },
+                                                        ]}
+                                                    >
+                                                        <Input placeholder="Fecha Nacimiento"/>
+                                                    </Form.Item>
+                                                    <Form.Item
+
+                                                        name="UserEmail"
+                                                        rules={[
+                                                            {
+                                                                required: true,
+                                                                message: "Ingresa un correo valido!",
+                                                            },
+                                                        ]}
+                                                    >
+                                                        <Input placeholder="E-mail"/>
+                                                    </Form.Item>
+                                                    <Form.Item
+
+                                                        name="password"
+                                                        rules={[
+                                                            {
+                                                                required: true,
+                                                                message: "Ingresa una clave valida!",
+                                                            },
+                                                        ]}
+                                                    >
+                                                        <Input.Password placeholder="Clave"/>
+                                                    </Form.Item>
+                                                    <Form.Item
+
+                                                        name="passwordConfirm"
+                                                        rules={[
+                                                            {
+                                                                required: true,
+                                                                message: "Las claves no cionciden!",
+                                                            },
+                                                        ]}
+                                                    >
+                                                        <Input.Password placeholder="Confirmar clave"/>
+                                                    </Form.Item>
+
                             <Form.Item
                               label="Fecha Nacimiento"
                               name="UserDate"
@@ -236,6 +329,7 @@ const HomePage = () => {
                             <Form.Item name="remember" valuePropName="checked">
                               <Checkbox>Recordarme</Checkbox>
                             </Form.Item>
+
 
                             <Form.Item>
                               <Button type="primary" htmlType="submit">
