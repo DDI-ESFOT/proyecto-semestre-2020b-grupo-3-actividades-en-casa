@@ -41,7 +41,7 @@ const ActivitiesPage = () => {
   return (
       <div className='espacio2'>
         <Row>
-          <Col span={8}>
+          <Col span={8} type="flex" align="middle">
             <Row>
               <Col span={6}></Col>
               <Col span={12}type="flex" align="middle">
@@ -99,7 +99,12 @@ const ActivitiesPage = () => {
               <Col span={6}></Col>
             </Row>
           </Col>
-          <Col span={8} offset={8}>
+
+          <Col span={8} type="flex" align="middle" id="pads">
+            <Title level={2}>BIENVENIDO....</Title>
+          </Col>
+
+          <Col span={8} type="flex" align="middle">
 
             <Link to={Routes.HOME}><Button type="primary">Cerrar Sesión</Button></Link>
           </Col>
