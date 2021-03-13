@@ -4,11 +4,6 @@
     padding-right: 0;
     padding-bottom: 10px;
     width: 1500px;
-
-}
-.fondo{
-    background-color: darkgoldenrod;
-    padding-left: 0;
 }
 .imagen{
     width: 700px;
@@ -36,4 +31,10 @@
 .espacio2{
     padding-top: 10px;
     width: 100%;
+    background-color:#ADB896;
+}
+
+#but-reg {
+    background-color: grey;
+    border-color: black;
 }

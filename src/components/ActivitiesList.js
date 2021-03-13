@@ -1,5 +1,6 @@
 import React from 'react';
-import { Table, Tag, Space , Button} from 'antd';
+import { Table} from 'antd';
+
 
 const ActivitiesList = () =>{
     const dataSource = [

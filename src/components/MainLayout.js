@@ -1,35 +1,27 @@
 import React from "react";
 import {
-    Button,
     Row,
     Col,
-    Layout,
-    Space,
-    Modal,
-    Input,
-    Typography,
-    Form,
-    Checkbox,
-    Menu
+    Layout
+
 } from "antd";
+
 import MainMenu from "./MainMenu";
 
 import {
     InstagramOutlined,
     FacebookOutlined,
-    YoutubeOutlined,
     TwitterOutlined,
-    MailOutlined, WhatsAppOutlined
+    MailOutlined, 
+    WhatsAppOutlined
 } from "@ant-design/icons";
-import imgheader from "../images/imgheader.jpg";
-import imgb1 from "../images/imgbody1.jpg";
-import imgb2 from "../images/imgbody2.jpg";
-import imgb3 from "../images/imgbody3.jpg";
+
 import foot from "../images/imgfoot.jpg";
 import "../styles/WFirst.css";
 
-const { SubMenu } = Menu;
-const { Header, Content, Footer, Sider } = Layout;
+
+const { Header, Content, Footer } = Layout;
+
 
 const MainLayout = ({ children }) => {
 
