@@ -68,6 +68,7 @@ const ActivitiesPage = () => {
   return (
  
     <div className='espacio2'>
+      <br></br>
       <Row>
         <Col span={8}>
           <Row>
