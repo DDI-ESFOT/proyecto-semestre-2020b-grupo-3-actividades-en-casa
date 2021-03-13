@@ -1,40 +1,40 @@
-.espacio{
-    padding-top: 10px;
-    padding-left: 0;
-    padding-right: 0;
-    padding-bottom: 10px;
-    width: 1500px;
+.espacio {
+  padding-top: 10px;
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: 10px;
+  width: 1500px;
 }
-.imagen{
-    width: 700px;
-    height: 200px;
+.imagen {
+  width: 700px;
+  height: 200px;
 }
-.imagen2{
-    width: 700px;
-    height: 200px;
-    padding: 0;
-    margin: 0;
+.imagen2 {
+  width: 700px;
+  height: 200px;
+  padding: 0;
+  margin: 0;
 }
-.letra1{
-    font-size: 50px;
-    text-align: center;
+.letra1 {
+  font-size: 50px;
+  text-align: center;
 }
-.boton1{
-    padding-left: 150px;
+.boton1 {
+  padding-left: 150px;
 }
-.espacio1{
-    padding-bottom: 10px;
+.espacio1 {
+  padding-bottom: 10px;
 }
-.text{
-    text-align: center;
+.text {
+  text-align: center;
 }
-.espacio2{
-    padding-top: 10px;
-    width: 100%;
-    background-color:#ADB896;
+.espacio2 {
+  padding-top: 10px;
+  width: 100%;
+  background-color: #adb896;
 }
 
 #but-reg {
-    background-color: grey;
-    border-color: black;
+  background-color: grey;
+  border-color: black;
 }

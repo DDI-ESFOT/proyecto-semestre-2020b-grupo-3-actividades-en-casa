@@ -1,11 +1,7 @@
 import "../styles/WFirst.css";
 import React, { useState } from "react";
 
-import {
-
-  UserOutlined,
-  UserAddOutlined
-} from "@ant-design/icons";
+import { UserOutlined, UserAddOutlined } from "@ant-design/icons";
 import {
   Button,
   Row,
@@ -18,8 +14,7 @@ import {
   Form,
   Checkbox,
   DatePicker,
-  Image
-
+  Image,
 } from "antd";
 
 import imgheader from "../images/imgheader.jpg";
@@ -29,7 +24,6 @@ import imgb3 from "../images/imgbody3.jpg";
 
 import { Carousel } from "antd";
 
-
 const HomePage = () => {
   const contentStyle = {
     height: "160px",
@@ -38,7 +32,6 @@ const HomePage = () => {
     textAlign: "center",
     background: "#364d79",
   };
-
 
   const { Header, Content } = Layout;
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -87,7 +80,6 @@ const HomePage = () => {
     console.log(date, dateString);
   }
 
-
   return (
     <>
       <Layout className="layout">
@@ -103,23 +95,28 @@ const HomePage = () => {
             <Col span={8} type="flex" align="middle">
               <br></br>
               <br></br>
-              <Title level={4} id="headt">UNA FORMA DIVERTIDA DE HACER TRABAJOS EN CASA</Title>
+              <Title level={4} id="headt">
+                UNA FORMA DIVERTIDA DE HACER TRABAJOS EN CASA
+              </Title>
               <Row>
                 <Col span={12}>
                   <Button type="primary" onClick={showModal2}>
                     Inciar Sesion
-                                </Button>
+                  </Button>
                   <Modal
                     title="ACTIVIDADES EN CASA"
                     visible={isModalVisible2}
                     onOk={handleOk2}
                     onCancel={handleCancel2}
                   >
-
                     <Row id="mod-head">
-                      <Col span={24}><Title level={2} align="middle">
-                        <UserOutlined />INICIO DE SESION{" "}
-                      </Title></Col></Row>
+                      <Col span={24}>
+                        <Title level={2} align="middle">
+                          <UserOutlined />
+                          INICIO DE SESION{" "}
+                        </Title>
+                      </Col>
+                    </Row>
                     <Row id="mod-back">
                       <Col span={6}></Col>
                       <Col span={12} type="flex" align="middle">
@@ -157,19 +154,18 @@ const HomePage = () => {
                               <Input.Password />
                             </Form.Item>
 
-
-
-
-
                             <Form.Item name="remember" valuePropName="checked">
                               <Checkbox>Recordarme</Checkbox>
                             </Form.Item>
 
-
                             <Form.Item>
-                              <Button id="but-mod" type="primary" htmlType="submit">
+                              <Button
+                                id="but-mod"
+                                type="primary"
+                                htmlType="submit"
+                              >
                                 Iniciar Sesión
-                                                        </Button>
+                              </Button>
                             </Form.Item>
                           </Form>
                         </Space>
@@ -181,7 +177,7 @@ const HomePage = () => {
                 <Col span={12}>
                   <Button type="primary" onClick={showModal}>
                     Registrarse
-                                </Button>
+                  </Button>
                   <Modal
                     title="ACTIVIDADES EN CASA"
                     visible={isModalVisible}
@@ -189,9 +185,12 @@ const HomePage = () => {
                     onCancel={handleCancel}
                   >
                     <Row id="mod-head">
-                      <Col span={24}><Title level={2} align="middle">
-                        <UserAddOutlined /> REGISTRATE{" "}
-                      </Title></Col></Row>
+                      <Col span={24}>
+                        <Title level={2} align="middle">
+                          <UserAddOutlined /> REGISTRATE{" "}
+                        </Title>
+                      </Col>
+                    </Row>
                     <Row id="mod-back">
                       <Col span={6}></Col>
                       <Col span={12} type="flex" align="middle">
@@ -244,10 +243,15 @@ const HomePage = () => {
                                 },
                                 ({ getFieldValue }) => ({
                                   validator(_, value) {
-                                    if (!value || getFieldValue('password') === value) {
+                                    if (
+                                      !value ||
+                                      getFieldValue("password") === value
+                                    ) {
                                       return Promise.resolve();
                                     }
-                                    return Promise.reject(new Error('Las contraseñas no coinciden'));
+                                    return Promise.reject(
+                                      new Error("Las contraseñas no coinciden")
+                                    );
                                   },
                                 }),
                               ]}
@@ -260,7 +264,11 @@ const HomePage = () => {
                             </Form.Item>
 
                             <Form.Item>
-                              <Button id="but-mod" type="primary" htmlType="submit">
+                              <Button
+                                id="but-mod"
+                                type="primary"
+                                htmlType="submit"
+                              >
                                 Registrarse{" "}
                               </Button>
                             </Form.Item>
@@ -362,11 +370,9 @@ const HomePage = () => {
           </Carousel>
           <br></br>
         </Content>
-
       </Layout>
     </>
   );
-
 };
 
 export default HomePage;
