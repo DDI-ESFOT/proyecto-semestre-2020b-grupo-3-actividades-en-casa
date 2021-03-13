@@ -76,7 +76,7 @@ const HomePage = () => {
     <>
         <Layout className="layout">
             <Header className="main-header">
-                <h1>ACTIVIDADES EN CASA</h1>
+                <Title level={2} id="title">ACTIVIDADES EN CASA</Title>
             </Header>
 
             <Content className="main-content">
@@ -85,7 +85,7 @@ const HomePage = () => {
                     <Col span={8} type="flex" align="middle">
                         <br></br>
                         <br></br>
-                        <h3>UNA FORMA DIVERTIDA DE HACER TRABAJOS EN CASA</h3>
+                        <Title level={4} id="headt">UNA FORMA DIVERTIDA DE HACER TRABAJOS EN CASA</Title>
                         <Row>
                             <Col span={12}>
                                 <Button type="primary" onClick={showModal2}>
