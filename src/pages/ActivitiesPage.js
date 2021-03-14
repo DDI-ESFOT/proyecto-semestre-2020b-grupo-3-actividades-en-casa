@@ -1,12 +1,24 @@
-import React, { useState } from "react";
-import { Row, Col, Typography, Input, Button, Space, Modal } from "antd";
+import { useState } from "react";
+import { database } from "../firebase";
+import {
+  Row,
+  Col,
+  Typography,
+  Input,
+  Button,
+  Space,
+  Modal,
+  Form,
+  DatePicker,
+} from "antd";
+
 import ActivitiesList from "../components/ActivitiesList";
 import { Link } from "react-router-dom";
 import Routes from "../constants/routes";
 import "../styles/home.css";
+import { FormOutlined } from "@ant-design/icons";
 
 const ActivitiesPage = () => {
-  const [isModalVisiblePrf, setIsModalVisiblePrf] = useState(false);
   const [isModalVisiblePra, setIsModalVisiblePra] = useState(false);
 
   const showModalPra = () => {
@@ -21,16 +33,33 @@ const ActivitiesPage = () => {
     setIsModalVisiblePra(false);
   };
 
-  const showModalPrf = () => {
-    setIsModalVisiblePrf(true);
+  const onFinish = (values) => {
+    console.log("Success:", values);
   };
 
-  const handleOkPrf = () => {
-    setIsModalVisiblePrf(false);
+  const onFinishFailed = (errorInfo) => {
+    console.log("Failed:", errorInfo);
   };
 
-  const handleCancelPrf = () => {
-    setIsModalVisiblePrf(false);
+  function onChange(date, dateString) {
+    console.log(date, dateString);
+  }
+
+  const handleActivity = async () => {
+    const activity = document.querySelector("#activity").value;
+    const date = document.querySelector("#date").value;
+    const nameF = document.querySelector("#nameF").value;
+
+    await database.ref("Familiares").push({
+      activity: activity,
+      date: date,
+      name: nameF,
+      state: "pendiente",
+    });
+
+    document.querySelector("#activity").value = " ";
+    document.querySelector("#date").value = " ";
+    document.querySelector("#nameF").value = " ";
   };
 
   const { Title } = Typography;
@@ -39,46 +68,6 @@ const ActivitiesPage = () => {
     <div className="espacio2">
       <Row>
         <Col span={8}>
-          <Row>
-            <Col span={6}></Col>
-            <Col span={12} type="flex" align="middle">
-              <Space direction="vertical">
-                <Button type="primary" id="but-reg" onClick={showModalPrf}>
-                  Registrar
-                </Button>
-
-                <Modal
-                  title="ACTIVIDADES EN CASA"
-                  visible={isModalVisiblePrf}
-                  onOk={handleOkPrf}
-                  onCancel={handleCancelPrf}
-                >
-                  <Title level={2} ype="flex" align="middle">
-                    REGISTRA TU FAMILIAR
-                  </Title>
-                  <Row>
-                    <Col span={6}></Col>
-                    <Col span={12} type="flex" align="middle">
-                      <Space direction="vertical">
-                        <Input placeholder="Apellidos" />
-                        <Input placeholder="Nombre" />
-                        <Input placeholder="Parentesco" />
-                        <Button type="primary" id="but-reg">
-                          Registrar
-                        </Button>
-                      </Space>
-                    </Col>
-                    <Col span={6}></Col>
-                  </Row>
-                </Modal>
-
-                <br></br>
-              </Space>
-            </Col>
-
-            <Col span={6}></Col>
-          </Row>
-
           <Row>
             <Col span={6}></Col>
             <Col span={12} type="flex" align="middle">
@@ -93,19 +82,44 @@ const ActivitiesPage = () => {
                   onOk={handleOkPra}
                   onCancel={handleCancelPra}
                 >
-                  <Title level={2} ype="flex" align="middle">
-                    REGISTRO DE ACTIVIDAD
-                  </Title>
-                  <Row>
+                  <Row id="mod-head">
+                    <Col span={24}>
+                      <Title level={2} align="middle">
+                        <FormOutlined /> REGISTRO DE ACTIVIDAD{" "}
+                      </Title>
+                    </Col>
+                  </Row>
+                  <Row v id="mod-back">
                     <Col span={6}></Col>
                     <Col span={12} type="flex" align="middle">
                       <Space direction="vertical">
-                        <Input placeholder="Actividad" />
-                        <Input placeholder="Fecha" />
-                        <Input placeholder="Persona" />
-                        <Button type="primary" id="but-reg">
-                          Añadir Actividad
-                        </Button>
+                        <Form
+                          name="basic"
+                          initialValues={{ remember: true }}
+                          onFinish={onFinish}
+                          onFinishFailed={onFinishFailed}
+                        >
+                          <br></br>
+                          <Form.Item name="Actividad">
+                            <Input placeholder="Actividad" id="activity" />
+                          </Form.Item>
+                          <Form.Item name="FechaActividad">
+                            <DatePicker onChange={onChange} id="date" />
+                          </Form.Item>
+                          <Form.Item name="Persona">
+                            <Input placeholder="Nombre Familiar" id="nameF" />
+                          </Form.Item>
+                          <Form.Item>
+                            <Button
+                              id="but-mod"
+                              type="primary"
+                              htmlType="submit"
+                              onClick={handleActivity}
+                            >
+                              Registrar
+                            </Button>
+                          </Form.Item>
+                        </Form>
                       </Space>
                     </Col>
                     <Col span={6}></Col>
@@ -120,10 +134,13 @@ const ActivitiesPage = () => {
         </Col>
         <Col span={8} offset={8}>
           <Link to={Routes.HOME}>
-            <Button type="primary">Cerrar Sesión</Button>
+            <Button id="but-reg" type="primary">
+              Cerrar Sesión
+            </Button>
           </Link>
         </Col>
       </Row>
+
       <ActivitiesList />
     </div>
   );
