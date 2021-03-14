@@ -1,6 +1,7 @@
 import React from 'react';
 import { Table} from 'antd';
 
+
 const ActivitiesList = () =>{
     const dataSource = [
         {
@@ -66,7 +67,7 @@ const ActivitiesList = () =>{
     return (
 
         <div>
-            <Table dataSource={dataSource} columns={columns} />;
+            <Table dataSource={dataSource} columns={columns} />
 
         </div>
     );

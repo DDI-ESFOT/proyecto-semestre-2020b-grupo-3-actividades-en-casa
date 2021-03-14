@@ -1,7 +1,12 @@
 {
   /* Visit https://firebase.google.com/docs/database/security to learn more about security rules. */
   "rules": {
+<<<<<<< HEAD
     ".read": true,
     ".write": true
+=======
+    ".read": false,
+    ".write": false
+>>>>>>> ac9b0cb21973e68ecfdb51d561429b60370da04f
   }
 }

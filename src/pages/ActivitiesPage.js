@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Row, Col, Typography, Input, Button, Space, Modal, Form, DatePicker } from 'antd';
+
 import ActivitiesList from '../components/ActivitiesList';
 import { Link } from "react-router-dom";
 import Routes from "../constants/routes";
@@ -190,6 +191,7 @@ const ActivitiesPage = () => {
 
       <ActivitiesList />
     </div>
+
   );
 };
 
