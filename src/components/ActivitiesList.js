@@ -12,7 +12,6 @@ const ActivitiesList = () => {
         snapshot.forEach((userSnapshot) => {
           userList.push(userSnapshot.val());
         });
-        console.log("lista", userList);
         setUsers(userList);
       });
     };
