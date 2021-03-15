@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { database } from "../firebase";
+import FIREBASE from "../firebase";
 import {
   Row,
   Col,
@@ -51,7 +51,7 @@ const ActivitiesPage = () => {
     const date = document.querySelector("#date").value;
     const nameF = document.querySelector("#nameF").value;
 
-    await database.ref("Familiares").push({
+    await FIREBASE.db.ref("Familiares").push({
       activity: activity,
       date: date,
       name: nameF,

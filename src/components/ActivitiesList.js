@@ -1,61 +1,26 @@
 import React from "react";
 import { Table } from "antd";
 import { useEffect, useState } from "react";
-import { database } from "../firebase";
+import FIREBASE from "../firebase";
 
 const ActivitiesList = () => {
   const [users, setUsers] = useState([]);
-
   useEffect(() => {
-    database.ref("familiares").on("value", (snapshot) => {
-      const userList = [];
-      snapshot.forEach((userSnapshot) => {
-        userList.push(userSnapshot.val());
+    const getUsers = async () => {
+      FIREBASE.db.ref("Familiares").on("value", (snapshot) => {
+        const userList = [];
+        snapshot.forEach((userSnapshot) => {
+          userList.push(userSnapshot.val());
+        });
+        console.log("lista", userList);
+        setUsers(userList);
       });
-      setUsers(userList);
-    });
+    };
+    getUsers();
     return () => {
-      database.ref("familiares").off();
+      FIREBASE.db.ref("Familiares").off();
     };
   }, []);
-
-  const dataSource = [
-    {
-      key: "1",
-      activity: "Limpiar la sala",
-      person: "Andres",
-      date: "2020/11/01",
-      state: "completo",
-    },
-    {
-      key: "2",
-      activity: "Limpiar el patio",
-      person: "Andrea",
-      date: "2020/12/24",
-      state: "pendiente",
-    },
-    {
-      key: "3",
-      activity: "Hacer la tarea",
-      person: "Pedro",
-      date: "2020/10/01",
-      state: "completo",
-    },
-    {
-      key: "4",
-      activity: "Acompañar hacer compras",
-      person: "Andres",
-      date: "2020/01/24",
-      state: "completado",
-    },
-    {
-      key: "5",
-      activity: "Pasear las mascotas",
-      person: "Pedro",
-      date: "2021/03/015",
-      state: "pendiente",
-    },
-  ];
 
   const columns = [
     {
@@ -79,14 +44,9 @@ const ActivitiesList = () => {
       key: "state",
     },
   ];
-  console.log("usuarios", users);
   return (
     <div>
-      <ul>
-        {users.map((user) => (
-          <li>{user.name}</li>
-        ))}
-      </ul>
+      <Table dataSource={users} columns={columns} />
     </div>
   );
 };
