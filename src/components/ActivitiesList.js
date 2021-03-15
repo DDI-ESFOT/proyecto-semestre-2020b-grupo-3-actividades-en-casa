@@ -5,9 +5,9 @@ import { database } from "../firebase";
 
 const ActivitiesList = () => {
   const [users, setUsers] = useState([]);
+
   useEffect(() => {
     database.ref("familiares").on("value", (snapshot) => {
-      const data = snapshot.val();
       const userList = [];
       snapshot.forEach((userSnapshot) => {
         userList.push(userSnapshot.val());
@@ -79,9 +79,14 @@ const ActivitiesList = () => {
       key: "state",
     },
   ];
+  console.log("usuarios", users);
   return (
     <div>
-      <Table dataSource={dataSource} columns={columns} />
+      <ul>
+        {users.map((user) => (
+          <li>{user.name}</li>
+        ))}
+      </ul>
     </div>
   );
 };

@@ -20,6 +20,7 @@ import { FormOutlined } from "@ant-design/icons";
 
 const ActivitiesPage = () => {
   const [isModalVisiblePra, setIsModalVisiblePra] = useState(false);
+  const [form] = Form.useForm();
 
   const showModalPra = () => {
     setIsModalVisiblePra(true);
@@ -56,10 +57,7 @@ const ActivitiesPage = () => {
       name: nameF,
       state: "pendiente",
     });
-
-    document.querySelector("#activity").value = " ";
-    document.querySelector("#date").value = " ";
-    document.querySelector("#nameF").value = " ";
+    form.resetFields();
   };
 
   const { Title } = Typography;
@@ -89,11 +87,12 @@ const ActivitiesPage = () => {
                       </Title>
                     </Col>
                   </Row>
-                  <Row v id="mod-back">
+                  <Row id="mod-back">
                     <Col span={6}></Col>
                     <Col span={12} type="flex" align="middle">
                       <Space direction="vertical">
                         <Form
+                          form={form}
                           name="basic"
                           initialValues={{ remember: true }}
                           onFinish={onFinish}
