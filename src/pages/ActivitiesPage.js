@@ -1,19 +1,25 @@
-import React, { useState } from 'react';
-import { Row, Col, Typography, Input, Button, Space, Modal, Form, DatePicker } from 'antd';
+import React, { useState } from "react";
+import {
+  Row,
+  Col,
+  Typography,
+  Input,
+  Button,
+  Space,
+  Modal,
+  Form,
+  DatePicker,
+} from "antd";
 
-import ActivitiesList from '../components/ActivitiesList';
+import ActivitiesList from "../components/ActivitiesList";
 import { Link } from "react-router-dom";
 import Routes from "../constants/routes";
 import "../styles/home.css";
-import imageBack from "../images/familia1.jpg"
+import imageBack from "../images/familia1.jpg";
 
-import {
-  FormOutlined,
-  UsergroupAddOutlined 
-} from "@ant-design/icons";
+import { FormOutlined, UsergroupAddOutlined } from "@ant-design/icons";
 
 const ActivitiesPage = () => {
-
   const [isModalVisiblePrf, setIsModalVisiblePrf] = useState(false);
   const [isModalVisiblePra, setIsModalVisiblePra] = useState(false);
 
@@ -28,7 +34,6 @@ const ActivitiesPage = () => {
   const handleCancelPra = () => {
     setIsModalVisiblePra(false);
   };
-
 
   const showModalPrf = () => {
     setIsModalVisiblePrf(true);
@@ -63,12 +68,9 @@ const ActivitiesPage = () => {
   }
 
   const { Title } = Typography;
- 
-
 
   return (
- 
-    <div className='espacio2'>
+    <div className="espacio2">
       <br></br>
       <Row>
         <Col span={8} type="flex" align="middle">
@@ -76,12 +78,22 @@ const ActivitiesPage = () => {
             <Col span={6}></Col>
             <Col span={12} type="flex" align="middle">
               <Space direction="vertical">
-                <Button type="primary" id="but-reg" onClick={showModalPrf}>Registrar Familiar</Button>
-                <Modal title="ACTIVIDADES EN CASA" visible={isModalVisiblePrf} onOk={handleOkPrf} onCancel={handleCancelPrf}>
+                <Button type="primary" id="but-reg" onClick={showModalPrf}>
+                  Registrar Familiar
+                </Button>
+                <Modal
+                  title="ACTIVIDADES EN CASA"
+                  visible={isModalVisiblePrf}
+                  onOk={handleOkPrf}
+                  onCancel={handleCancelPrf}
+                >
                   <Row id="mod-head">
-                    <Col span={24}><Title level={2} align="middle">
-                    <UsergroupAddOutlined /> REGISTRA TU FAMILIAR{" "}
-                    </Title></Col></Row>
+                    <Col span={24}>
+                      <Title level={2} align="middle">
+                        <UsergroupAddOutlined /> REGISTRA TU FAMILIAR{" "}
+                      </Title>
+                    </Col>
+                  </Row>
                   <Row id="mod-back">
                     <Col span={6}></Col>
                     <Col span={12} type="flex" align="middle">
@@ -93,26 +105,24 @@ const ActivitiesPage = () => {
                           onFinishFailed={onFinishFailed2}
                         >
                           <br></br>
-                          <Form.Item
-                            name="ApellidoFamiliar"
-                          >
+                          <Form.Item name="ApellidoFamiliar">
                             <Input placeholder="Apellido" />
                           </Form.Item>
 
-                          <Form.Item
-                            name="NombreFamiliar"
-                          >
+                          <Form.Item name="NombreFamiliar">
                             <Input placeholder="Nombre" />
                           </Form.Item>
-                          <Form.Item
-                            name="ParentescoFamiliar"
-                          >
+                          <Form.Item name="ParentescoFamiliar">
                             <Input placeholder="Parentesco" />
                           </Form.Item>
                           <Form.Item>
-                            <Button   id="but-mod"  type="primary" htmlType="submit">
+                            <Button
+                              id="but-mod"
+                              type="primary"
+                              htmlType="submit"
+                            >
                               Registrar
-                             </Button>
+                            </Button>
                           </Form.Item>
                         </Form>
                       </Space>
@@ -132,14 +142,23 @@ const ActivitiesPage = () => {
             <Col span={6}></Col>
             <Col span={12} type="flex" align="middle">
               <Space direction="vertical">
-                <Button type="primary" id="but-reg" onClick={showModalPra}>Añadir Actividad</Button>
+                <Button type="primary" id="but-reg" onClick={showModalPra}>
+                  Añadir Actividad
+                </Button>
 
-                <Modal title="ACTIVIDADES EN CASA" visible={isModalVisiblePra} onOk={handleOkPra} onCancel={handleCancelPra}>
-
+                <Modal
+                  title="ACTIVIDADES EN CASA"
+                  visible={isModalVisiblePra}
+                  onOk={handleOkPra}
+                  onCancel={handleCancelPra}
+                >
                   <Row id="mod-head">
-                    <Col span={24}><Title level={2} align="middle">
-                    <FormOutlined /> REGISTRO DE ACTIVIDAD{" "}
-                    </Title></Col></Row>
+                    <Col span={24}>
+                      <Title level={2} align="middle">
+                        <FormOutlined /> REGISTRO DE ACTIVIDAD{" "}
+                      </Title>
+                    </Col>
+                  </Row>
                   <Row v id="mod-back">
                     <Col span={6}></Col>
                     <Col span={12} type="flex" align="middle">
@@ -151,25 +170,23 @@ const ActivitiesPage = () => {
                           onFinishFailed={onFinishFailed}
                         >
                           <br></br>
-                          <Form.Item
-                            name="Actividad"
-                          >
+                          <Form.Item name="Actividad">
                             <Input placeholder="Actividad" />
                           </Form.Item>
-                          <Form.Item
-                            name="FechaActividad"
-                          >
+                          <Form.Item name="FechaActividad">
                             <DatePicker onChange={onChange} />
                           </Form.Item>
-                          <Form.Item
-                            name="Persona"
-                          >
+                          <Form.Item name="Persona">
                             <Input placeholder="Persona" />
                           </Form.Item>
                           <Form.Item>
-                            <Button  id="but-mod"  type="primary" htmlType="submit">
+                            <Button
+                              id="but-mod"
+                              type="primary"
+                              htmlType="submit"
+                            >
                               Iniciar Sesión
-                             </Button>
+                            </Button>
                           </Form.Item>
                         </Form>
                       </Space>
@@ -190,15 +207,16 @@ const ActivitiesPage = () => {
         </Col>
 
         <Col span={8} type="flex" align="middle">
-
-          <Link to={Routes.HOME}><Button id="but-reg" type="primary">Cerrar Sesión</Button></Link>
+          <Link to={Routes.HOME}>
+            <Button id="but-reg" type="primary">
+              Cerrar Sesión
+            </Button>
+          </Link>
         </Col>
       </Row>
 
-
       <ActivitiesList />
     </div>
-
   );
 };
 
