@@ -397,7 +397,7 @@ const HomePage = () => {
               </Row>
             </Col>
             <Col span={11} type="flex" align="right">
-              <img src={imgheader} alt="header" width="100%" height="100%" />
+              <img src={imgheader} alt="header" width="100%" height="250px" />
             </Col>
           </Row>
           <br></br>
