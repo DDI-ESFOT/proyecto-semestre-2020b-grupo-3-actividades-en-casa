@@ -6,10 +6,14 @@ import { Link } from "react-router-dom";
 import Routes from "../constants/routes";
 import "../styles/home.css";
 
+import withAuth from "../hocs/withAuth";
+
+
 import {
   FormOutlined,
   UsergroupAddOutlined 
 } from "@ant-design/icons";
+
 
 const ActivitiesPage = () => {
 
@@ -193,7 +197,8 @@ const ActivitiesPage = () => {
       <ActivitiesList />
     </div>
 
+
   );
 };
 
-export default ActivitiesPage;
+export default withAuth(ActivitiesPage);
