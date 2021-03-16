@@ -5,6 +5,7 @@ import ActivitiesList from '../components/ActivitiesList';
 import { Link } from "react-router-dom";
 import Routes from "../constants/routes";
 import "../styles/home.css";
+import imageBack from "../images/familia1.jpg"
 
 import {
   FormOutlined,
@@ -70,7 +71,7 @@ const ActivitiesPage = () => {
     <div className='espacio2'>
       <br></br>
       <Row>
-        <Col span={8}>
+        <Col span={8} type="flex" align="middle">
           <Row>
             <Col span={6}></Col>
             <Col span={12} type="flex" align="middle">
@@ -183,7 +184,12 @@ const ActivitiesPage = () => {
             <Col span={6}></Col>
           </Row>
         </Col>
-        <Col span={8} offset={8}>
+
+        <Col span={8} type="flex" align="middle">
+          <Title level={2}>Bienvenido....</Title>
+        </Col>
+
+        <Col span={8} type="flex" align="middle">
 
           <Link to={Routes.HOME}><Button id="but-reg" type="primary">Cerrar Sesión</Button></Link>
         </Col>

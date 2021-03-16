@@ -1,3 +1,5 @@
+
+
 .espacio{
     padding-top: 10px;
     padding-left: 0;
@@ -30,11 +32,14 @@
 }
 .espacio2{
     padding-top: 10px;
-    width: 100%;
-    background-color:#ADB896;
 }
 
 #but-reg {
     background-color: grey;
+    border-color: black;
+}
+
+#but-up{
+    background-color: rgb(226, 224, 221);
     border-color: black;
 }
