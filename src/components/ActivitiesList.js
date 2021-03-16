@@ -26,8 +26,15 @@ const ActivitiesList = () => {
 
 const [todos] = React.useState(users);
 
-console.log(todos);
+console.log("Arreglo",users);
 
+/*const handleAddComplete = (index) =>{
+    setCompleted( ( prevState ) => [
+        ...prevState,
+        users[ index ]
+    ] );
+}
+*/
 /*const handleCompleted = () => {
     todos.map = (todo) => {
         return (
