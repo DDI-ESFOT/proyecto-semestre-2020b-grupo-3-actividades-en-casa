@@ -9,7 +9,9 @@ import {
 import avatar1 from "../images/jorge.jpg";
 import avatar2 from "../images/byron.jpeg";
 import avatar3 from "../images/bernabe.jpeg";
+import avatar4 from "../images/jef.jpeg";
 import imgmv from "../images/mvision.png";
+
 
 import {
   QuestionCircleOutlined
@@ -110,17 +112,16 @@ const AboutPage = () => {
           <br></br>
           <Row>
             <Col span={3}></Col>
-            <Col span={8}><img id="im-about" src={avatar1} alt="header" width="300" height="300" /> </Col>
+            <Col span={8}><img id="im-about" src={avatar4} alt="header" width="300" height="300" /> </Col>
             <Col span={1}></Col>
             <Col span={10} type="flex" align="middle">
               <Title level={2} id="name" type="flex" align="middle">Jefferson Llumiquinga</Title>
               <Title id="titu-col" level={5} >
-                Mi nombre es Jorge Alba soy estudiante de la Escuela Politecnica Nacional.
-                Soy una persona que quiere junto a la tecnologia seguir desarrollando productos
-                de calidad los cuales  brinden facilidades a problematicas cotidianas.
-                Los desarrolladores podemos cambiar al mundo y lo haremos como mucho esfuerzo.
-                Tengo mucha ambición de querer aprender más, para nosotros el programador perfecto
-                debe ser un devorador de información nueva y tener la capacidad de trabajo en equipo.
+               Mi nombre es Jefferson Llumiquinga estudiante 
+               de la Escuela Politécnica Nacional de la carrera de Análisis de Sistemas Informáticos en base
+               a los conocimientos adquiridos en la carrera lo que buscamos es solucionar las problemáticas 
+               de la sociedad esto mediante a tecnología que nos  brindan, aplicando buenos criterios y el 
+               correcto manejo de las herramientas.
              </Title>
             </Col>
 
