@@ -17,7 +17,7 @@ import {
   DatePicker,
   Image,
   message,
-    Upload,
+  Upload,
 } from "antd";
 
 import imgheader from "../images/imgheader.jpg";
@@ -208,11 +208,8 @@ const HomePage = () => {
                 </Col>
                 <Col span={12}>
                   <Button type="primary" onClick={showModal}>
-
-
                     Registrese
                   </Button>
-
                   <Modal
                     title="ACTIVIDADES EN CASA"
                     visible={isModalVisible}
@@ -243,7 +240,6 @@ const HomePage = () => {
                             <Form.Item name="UserLastNames">
                               <Input placeholder="Apellido" />
                             </Form.Item>
-
 
                                                     <Form.Item>
                                                         <Button type="primary" htmlType="submit">
@@ -370,18 +366,18 @@ const HomePage = () => {
                                                         <Input.Password placeholder="Confirmar clave"/>
                                                     </Form.Item>
 
-
                             <Form.Item name="remember" valuePropName="checked">
                               <Checkbox>Recordarme</Checkbox>
                             </Form.Item>
 
                             <Form.Item>
-
                               <Button
                                 id="but-mod"
                                 type="primary"
                                 htmlType="submit"
+
                         loading={loading}
+
                               >
                                 Registrarse{" "}
 
@@ -397,7 +393,7 @@ const HomePage = () => {
               </Row>
             </Col>
             <Col span={11} type="flex" align="right">
-              <img src={imgheader} alt="header" width="100%" height="250px" />
+              <img src={imgheader} alt="header" width="100%" height="200" />
             </Col>
           </Row>
           <br></br>
