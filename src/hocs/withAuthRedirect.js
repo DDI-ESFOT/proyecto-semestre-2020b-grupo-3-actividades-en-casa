@@ -1,12 +1,12 @@
 /**
  * Created by chalosalvador on 8/16/20
  */
-import { useAuth } from '../lib/auth';
-import Loading from '../components/Loading';
-import React from 'react';
-import {auth} from "../firebase";
-import { Redirect, useHistory } from 'react-router-dom';
-import Routes from '../constants/routes';
+import { useAuth } from "../lib/auth";
+import Loading from "../components/Loading";
+import React from "react";
+import { auth } from "../firebase";
+import { Redirect, useHistory } from "react-router-dom";
+import Routes from "../constants/routes";
 
 /**
  * Support client-side conditional redirecting based on the user's
@@ -20,26 +20,26 @@ import Routes from '../constants/routes';
  * the component to be rendered.
  * @param location The location to redirect to.
  */
-export default function withAuthRedirect( {
+export default function withAuthRedirect({
   WrappedComponent,
   LoadingComponent = Loading,
   expectedAuth,
-  location
-} ) {
-  return (props) =>{
-    const {user} = useAuth();
+  location,
+}) {
+  return (props) => {
+    const { user } = useAuth();
     const history = useHistory();
 
-    if (user ==null){
-      return <LoadingComponent/>;
+    if (user == null) {
+      return <LoadingComponent />;
     }
     const isAuthenticated = !!user;
     const shouldRedirect = expectedAuth !== isAuthenticated;
-    if(shouldRedirect){
+    if (shouldRedirect) {
       history.push(location || Routes.HOME);
-      return null
+      return null;
     }
 
-    return <WrappedComponent {...props}/>
+    return <WrappedComponent {...props} />;
   };
 }

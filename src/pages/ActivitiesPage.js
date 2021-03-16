@@ -16,8 +16,9 @@ import ActivitiesList from "../components/ActivitiesList";
 import { Link } from "react-router-dom";
 import Routes from "../constants/routes";
 import "../styles/home.css";
-import imageBack from "../images/familia1.jpg";
+
 import withAuth from "../hocs/withAuth";
+
 import { FormOutlined, UsergroupAddOutlined } from "@ant-design/icons";
 
 const ActivitiesPage = () => {
@@ -34,19 +35,6 @@ const ActivitiesPage = () => {
 
   const handleCancelPra = () => {
     setIsModalVisiblePra(false);
-  };
-
-
-  const showModalPrf = () => {
-    setIsModalVisiblePrf(true);
-  };
-
-  const handleOkPrf = () => {
-    setIsModalVisiblePrf(false);
-  };
-
-  const handleCancelPrf = () => {
-    setIsModalVisiblePrf(false);
   };
 
   const onFinish = (values) => {
@@ -79,9 +67,8 @@ const ActivitiesPage = () => {
 
   return (
     <div className="espacio2">
-      <br></br>
       <Row>
-        <Col span={8} type="flex" align="middle">
+        <Col span={8}>
           <Row>
             <Col span={6}></Col>
             <Col span={12} type="flex" align="middle">
@@ -154,6 +141,8 @@ const ActivitiesPage = () => {
             </Button>
           </Link>
         </Col>
+      </Row>
+
       <ActivitiesList />
     </div>
   );

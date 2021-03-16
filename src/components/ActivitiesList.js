@@ -9,7 +9,7 @@ const ActivitiesList = () => {
   const [users, setUsers] = useState([]);
   useEffect(() => {
     const getUsers = async () => {
-        db.ref("Familiares").on("value", (snapshot) => {
+      db.ref("Familiares").on("value", (snapshot) => {
         const toDoList = [];
         snapshot.forEach((userSnapshot) => {
           toDoList.push({ id: userSnapshot.key, ...userSnapshot.val() });

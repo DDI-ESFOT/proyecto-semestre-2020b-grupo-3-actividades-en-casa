@@ -144,7 +144,7 @@ const AboutPage = () => {
               <Col span={8}>
                 <img
                   id="im-about"
-                  src={avatar1}
+                  src={avatar4}
                   alt="header"
                   width="300"
                   height="300"
@@ -153,17 +153,15 @@ const AboutPage = () => {
               <Col span={1}></Col>
               <Col span={10} type="flex" align="middle">
                 <Title level={2} id="name" type="flex" align="middle">
-                  Jefferson Llumiquinga
+                  Jefferson Ricardo Llumiquinga Llumiquinga
                 </Title>
                 <Title id="titu-col" level={5}>
-                  Mi nombre es Jorge Alba soy estudiante de la Escuela
-                  Politecnica Nacional. Soy una persona que quiere junto a la
-                  tecnologia seguir desarrollando productos de calidad los
-                  cuales brinden facilidades a problematicas cotidianas. Los
-                  desarrolladores podemos cambiar al mundo y lo haremos como
-                  mucho esfuerzo. Tengo mucha ambición de querer aprender más,
-                  para nosotros el programador perfecto debe ser un devorador de
-                  información nueva y tener la capacidad de trabajo en equipo.
+                  Mi nombre es Jefferson Llumiquinga estudiante de la Escuela
+                  Politécnica Nacional de la carrera de Análisis de Sistemas
+                  Informáticos en base a los conocimientos adquiridos en la
+                  carrera lo que buscamos es solucionar las problemáticas de la
+                  sociedad esto mediante a tecnología que nos brindan, aplicando
+                  buenos criterios y el correcto manejo de las herramientas.
                 </Title>
               </Col>
             </Row>
@@ -205,68 +203,8 @@ const AboutPage = () => {
           </Col>
         </Row>
       </div>
-      <div>
-        <h3 style={contentStyle}>
-          <br></br>
-          <Row>
-            <Col span={3}></Col>
-            <Col span={8}><img id="im-about" src={avatar3} alt="header" width="300" height="300" /> </Col>
-            <Col span={1}></Col>
-            <Col span={10} type="flex" align="middle">
-              <Title level={2} id="name" type="flex" align="middle">Juan Bernabé Dávila Flores</Title>
-              <Title id="titu-col" level={5} >
-                Mi nombre es Bernabé Dávila soy estudiante de la carrera de Tecnología Superior en Desarrollo de Software
-                en la Escuela Politécnica Nacional. Soy un joven que esta  enfocado en el constante aprendizaje de metodologías
-                que ayuden a diseñar  aplicaciones, buscando siempre la calidad y simplicidad en estas, para que estas brinden
-                a los usuarios una ayuda y solucion a problemas que surgen diariamente. Mi meta como desarrollador de software
-                es tener un conocimiento amplio de diferentes lenguajes de programación y obtener conocimientos avanzados en la
-                rama de la Computación para que cuando se presente un problema de esta índole, pueda solucionarlo de la mejor
-                manera.
-             </Title>
-            </Col>
-
-          </Row>
-        </h3>
-      </div>
-      <div>
-        <h3 style={contentStyle}>
-          <br></br>
-          <Row>
-            <Col span={3}></Col>
-            <Col span={8}><img id="im-about" src={avatar4} alt="header" width="300" height="300" /> </Col>
-            <Col span={1}></Col>
-            <Col span={10} type="flex" align="middle">
-              <Title level={2} id="name" type="flex" align="middle">Jefferson Ricardo Llumiquinga Llumiquinga</Title>
-              <Title id="titu-col" level={5} >
-               Mi nombre es Jefferson Llumiquinga estudiante 
-               de la Escuela Politécnica Nacional de la carrera de Análisis de Sistemas Informáticos en base
-               a los conocimientos adquiridos en la carrera lo que buscamos es solucionar las problemáticas 
-               de la sociedad esto mediante a tecnología que nos  brindan, aplicando buenos criterios y el 
-               correcto manejo de las herramientas.
-             </Title>
-            </Col>
-
-          </Row>
-        </h3>
-      </div>
-    </Carousel>
-    <br></br>
-    <div id="mvdiv">
-      <Row>
-        <Col span={12}>
-          <Title level={3}>Nuestra Misión</Title>
-          <Title id="tit" level={4}>Maximizar el potencial de nuestros clientes a través del uso de Internet relacioando a la orgnizacion del hogar.</Title>
-          <Title level={3}>Nuestros valores como equipo e individuos son</Title>
-          <Title id="tit" level={4}>Honestidad, Lealtad, Respeto, Pasión por los desafíos, Superación Constante y Creatividad.</Title>
-          <Title level={3}>Nuestra visión</Title>
-          <Title id="tit" level={4}>Ofrecer un producto eficiente el cual otorgue beneficios a los usuarios en epocas de pandemia. Mejorar la union familiar dentro de a mayor canridad de hogares del país.</Title>
-        </Col>
-        <Col span={3}></Col>
-        <Col span={9}>
-          <img id="im-vm" src={imgmv} alt="header" type="flex" align="middle" />
-        </Col>
-      </Row>
-
+      <br></br>
+      <br></br>
     </div>
   );
 };
