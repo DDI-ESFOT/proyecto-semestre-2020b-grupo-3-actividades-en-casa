@@ -1,14 +1,15 @@
 import React from "react";
+
 import { Button, Table, Tag, Space } from "antd";
 import { useEffect, useState } from "react";
-import FIREBASE from "../firebase";
 import { DeleteOutlined, CheckOutlined } from "@ant-design/icons";
+import { db } from "../firebase";
 
 const ActivitiesList = () => {
   const [users, setUsers] = useState([]);
   useEffect(() => {
     const getUsers = async () => {
-      FIREBASE.db.ref("Familiares").on("value", (snapshot) => {
+        db.ref("Familiares").on("value", (snapshot) => {
         const toDoList = [];
         snapshot.forEach((userSnapshot) => {
           toDoList.push({ id: userSnapshot.key, ...userSnapshot.val() });
@@ -19,18 +20,18 @@ const ActivitiesList = () => {
     };
     getUsers();
     return () => {
-      FIREBASE.db.ref("Familiares").off();
+      db.ref("Familiares").off();
     };
   }, []);
 
   console.log("Arreglo", users);
 
   const handleCompleted = async (id) => {
-    await FIREBASE.db.ref(`Familiares/${id}/state`).set("completada");
+    await db.ref(`Familiares/${id}/state`).set("completada");
   };
 
   const handeDelete = async (id) => {
-    await FIREBASE.db.ref(`Familiares/${id}`).remove();
+    await db.ref(`Familiares/${id}`).remove();
   };
 
   const columns = [

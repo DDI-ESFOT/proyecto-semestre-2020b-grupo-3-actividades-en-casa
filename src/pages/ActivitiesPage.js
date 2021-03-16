@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { db } from "../firebase";
 import {
   Row,
   Col,
@@ -16,12 +17,12 @@ import { Link } from "react-router-dom";
 import Routes from "../constants/routes";
 import "../styles/home.css";
 import imageBack from "../images/familia1.jpg";
-
+import withAuth from "../hocs/withAuth";
 import { FormOutlined, UsergroupAddOutlined } from "@ant-design/icons";
 
 const ActivitiesPage = () => {
-  const [isModalVisiblePrf, setIsModalVisiblePrf] = useState(false);
   const [isModalVisiblePra, setIsModalVisiblePra] = useState(false);
+  const [form] = Form.useForm();
 
   const showModalPra = () => {
     setIsModalVisiblePra(true);
@@ -34,6 +35,7 @@ const ActivitiesPage = () => {
   const handleCancelPra = () => {
     setIsModalVisiblePra(false);
   };
+
 
   const showModalPrf = () => {
     setIsModalVisiblePrf(true);
@@ -55,17 +57,23 @@ const ActivitiesPage = () => {
     console.log("Failed:", errorInfo);
   };
 
-  const onFinish2 = (values) => {
-    console.log("Success:", values);
-  };
-
-  const onFinishFailed2 = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-  };
-
   function onChange(date, dateString) {
     console.log(date, dateString);
   }
+
+  const handleActivity = async () => {
+    const activity = document.querySelector("#activity").value;
+    const date = document.querySelector("#date").value;
+    const nameF = document.querySelector("#nameF").value;
+
+    await db.ref("Familiares").push({
+      activity: activity,
+      date: date,
+      name: nameF,
+      state: "pendiente",
+    });
+    form.resetFields();
+  };
 
   const { Title } = Typography;
 
@@ -74,70 +82,6 @@ const ActivitiesPage = () => {
       <br></br>
       <Row>
         <Col span={8} type="flex" align="middle">
-          <Row>
-            <Col span={6}></Col>
-            <Col span={12} type="flex" align="middle">
-              <Space direction="vertical">
-                <Button type="primary" id="but-reg" onClick={showModalPrf}>
-                  Registrar Familiar
-                </Button>
-                <Modal
-                  title="ACTIVIDADES EN CASA"
-                  visible={isModalVisiblePrf}
-                  onOk={handleOkPrf}
-                  onCancel={handleCancelPrf}
-                >
-                  <Row id="mod-head">
-                    <Col span={24}>
-                      <Title level={2} align="middle">
-                        <UsergroupAddOutlined /> REGISTRA TU FAMILIAR{" "}
-                      </Title>
-                    </Col>
-                  </Row>
-                  <Row id="mod-back">
-                    <Col span={6}></Col>
-                    <Col span={12} type="flex" align="middle">
-                      <Space direction="vertical">
-                        <Form
-                          name="basic"
-                          initialValues={{ remember: true }}
-                          onFinish={onFinish2}
-                          onFinishFailed={onFinishFailed2}
-                        >
-                          <br></br>
-                          <Form.Item name="ApellidoFamiliar">
-                            <Input placeholder="Apellido" />
-                          </Form.Item>
-
-                          <Form.Item name="NombreFamiliar">
-                            <Input placeholder="Nombre" />
-                          </Form.Item>
-                          <Form.Item name="ParentescoFamiliar">
-                            <Input placeholder="Parentesco" />
-                          </Form.Item>
-                          <Form.Item>
-                            <Button
-                              id="but-mod"
-                              type="primary"
-                              htmlType="submit"
-                            >
-                              Registrar
-                            </Button>
-                          </Form.Item>
-                        </Form>
-                      </Space>
-                    </Col>
-                    <Col span={6}></Col>
-                  </Row>
-                </Modal>
-
-                <br></br>
-              </Space>
-            </Col>
-
-            <Col span={6}></Col>
-          </Row>
-
           <Row>
             <Col span={6}></Col>
             <Col span={12} type="flex" align="middle">
@@ -159,11 +103,12 @@ const ActivitiesPage = () => {
                       </Title>
                     </Col>
                   </Row>
-                  <Row v id="mod-back">
+                  <Row id="mod-back">
                     <Col span={6}></Col>
                     <Col span={12} type="flex" align="middle">
                       <Space direction="vertical">
                         <Form
+                          form={form}
                           name="basic"
                           initialValues={{ remember: true }}
                           onFinish={onFinish}
@@ -171,21 +116,22 @@ const ActivitiesPage = () => {
                         >
                           <br></br>
                           <Form.Item name="Actividad">
-                            <Input placeholder="Actividad" />
+                            <Input placeholder="Actividad" id="activity" />
                           </Form.Item>
                           <Form.Item name="FechaActividad">
-                            <DatePicker onChange={onChange} />
+                            <DatePicker onChange={onChange} id="date" />
                           </Form.Item>
                           <Form.Item name="Persona">
-                            <Input placeholder="Persona" />
+                            <Input placeholder="Nombre Familiar" id="nameF" />
                           </Form.Item>
                           <Form.Item>
                             <Button
                               id="but-mod"
                               type="primary"
                               htmlType="submit"
+                              onClick={handleActivity}
                             >
-                              Iniciar Sesión
+                              Registrar
                             </Button>
                           </Form.Item>
                         </Form>
@@ -201,23 +147,16 @@ const ActivitiesPage = () => {
             <Col span={6}></Col>
           </Row>
         </Col>
-
-        <Col span={8} type="flex" align="middle">
-          <Title level={2}>Bienvenido....</Title>
-        </Col>
-
-        <Col span={8} type="flex" align="middle">
+        <Col span={8} offset={8}>
           <Link to={Routes.HOME}>
             <Button id="but-reg" type="primary">
               Cerrar Sesión
             </Button>
           </Link>
         </Col>
-      </Row>
-
       <ActivitiesList />
     </div>
   );
 };
 
-export default ActivitiesPage;
+export default withAuth(ActivitiesPage);

@@ -30,6 +30,8 @@
 }
 .espacio2 {
   padding-top: 10px;
+  width: 100%;
+  background-color: #adb896;
 }
 
 #but-reg {
@@ -37,7 +39,3 @@
   border-color: black;
 }
 
-#but-up {
-  background-color: rgb(226, 224, 221);
-  border-color: black;
-}
