@@ -1,5 +1,5 @@
 import { useState } from "react";
-import FIREBASE from "../firebase";
+import { db } from "../firebase";
 import {
   Row,
   Col,
@@ -19,13 +19,7 @@ import "../styles/home.css";
 
 import withAuth from "../hocs/withAuth";
 
-
-import {
-  FormOutlined,
-  UsergroupAddOutlined 
-} from "@ant-design/icons";
-
-
+import { FormOutlined, UsergroupAddOutlined } from "@ant-design/icons";
 
 const ActivitiesPage = () => {
   const [isModalVisiblePra, setIsModalVisiblePra] = useState(false);
@@ -60,7 +54,7 @@ const ActivitiesPage = () => {
     const date = document.querySelector("#date").value;
     const nameF = document.querySelector("#nameF").value;
 
-    await FIREBASE.db.ref("Familiares").push({
+    await db.ref("Familiares").push({
       activity: activity,
       date: date,
       name: nameF,
@@ -151,7 +145,6 @@ const ActivitiesPage = () => {
 
       <ActivitiesList />
     </div>
-
   );
 };
 

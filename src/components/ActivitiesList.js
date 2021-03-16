@@ -1,13 +1,13 @@
 import React from "react";
 import { Table } from "antd";
 import { useEffect, useState } from "react";
-import FIREBASE from "../firebase";
+import { db } from "../firebase";
 
 const ActivitiesList = () => {
   const [users, setUsers] = useState([]);
   useEffect(() => {
     const getUsers = async () => {
-      FIREBASE.db.ref("Familiares").on("value", (snapshot) => {
+      db.ref("Familiares").on("value", (snapshot) => {
         const userList = [];
         snapshot.forEach((userSnapshot) => {
           userList.push(userSnapshot.val());
@@ -17,7 +17,7 @@ const ActivitiesList = () => {
     };
     getUsers();
     return () => {
-      FIREBASE.db.ref("Familiares").off();
+      db.ref("Familiares").off();
     };
   }, []);
 
