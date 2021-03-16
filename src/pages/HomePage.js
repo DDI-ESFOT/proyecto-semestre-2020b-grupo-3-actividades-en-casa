@@ -1,18 +1,20 @@
 import "../styles/WFirst.css";
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
+import UploadOutlined from "@ant-design/icons";
 
 import {
-  Button,
-  Row,
-  Col,
-  Layout,
-  Space,
-  Modal,
-  Input,
-  Typography,
-  Form,
-  Checkbox,
-  Image,
+    Button,
+    Row,
+    Col,
+    Layout,
+    Space,
+    Modal,
+    Input,
+    Typography,
+    Form,
+    Checkbox,
+    Image, message,
+    Upload
 } from "antd";
 
 import imgheader from "../images/imgheader.jpg";
@@ -20,6 +22,12 @@ import imgb1 from "../images/imgbody1.jpg";
 import imgb2 from "../images/imgbody2.jpg";
 import imgb3 from "../images/imgbody3.jpg";
 import { Carousel } from "antd";
+import {auth} from "../firebase";
+import translateMessage from "../utils/translateMessage";
+import {useAuth} from "../lib/auth";
+import { useHistory} from "react-router-dom";
+import Routes from "../constants/routes";
+import withoutAuth from "../hocs/withoutAuth";
 
 const HomePage = () => {
   const contentStyle = {
@@ -33,18 +41,39 @@ const HomePage = () => {
   const { Header, Content} = Layout;
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isModalVisible2, setIsModalVisible2] = useState(false);
+  const [loading, setLoading] = useState(false);
   const { Title } = Typography;
 
-  const onFinish = (values) => {
-    console.log("Success:", values);
+  const {login, register, user} = useAuth();
+  const history = useHistory();
+
+
+    const normFile = (e) => {
+        console.log('Upload event:', e);
+        if (Array.isArray(e)) {
+            return e;
+        }
+        return e && e.fileList;
+    };
+  const onFinish = ({email, password}) => {
+
+      login(email,password);
+
   };
 
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
 
-  const onFinish2 = (values) => {
-    console.log("Success:", values);
+  const onFinish2 = async (data) => {
+      console.log(data)
+      setLoading(true);
+     await register({
+          ...data,
+          image: data.image[0].Target
+      });
+     setLoading(false);
+
   };
 
   const onFinishFailed2 = (errorInfo) => {
@@ -73,6 +102,7 @@ const HomePage = () => {
   const handleCancel2 = () => {
     setIsModalVisible2(false);
   };
+
 
   return (
     <>
@@ -114,9 +144,10 @@ const HomePage = () => {
                           >
                             <Form.Item
                               label="E-mail"
-                              name="username"
+                              name="email"
                               rules={[
                                 {
+                                    type: "email",
                                   required: true,
                                   message: "Ingresa un correo valido!",
                                 },
@@ -156,7 +187,7 @@ const HomePage = () => {
                 </Col>
                 <Col span={12}>
                   <Button type="primary" onClick={showModal}>
-                    Registrarse
+                    Registrese
                   </Button>
                   <Modal
                     title="ACTIVIDADES EN CASA"
@@ -218,10 +249,36 @@ const HomePage = () => {
                                                     onFinish={onFinish2}
                                                     onFinishFailed={onFinishFailed2}
                                                 >
-                                                    <Form.Item  name="UserNames">
+                                                    <Form.Item
+                                                        name="image"
+                                                        label="Foto"
+                                                        valuePropName="fileList"
+                                                        getValueFromEvent={normFile}
+                                                        extra="Selecciona una foto"
+                                                    >
+                                                        <Upload name="logo" action={null} listType="picture">
+                                                            <Button icon={<UploadOutlined />}>Selecciona una foto</Button>
+                                                        </Upload>
+                                                    </Form.Item>
+                                                    <Form.Item  name="UserNames"
+                                                                rules={[
+                                                                    {
+
+                                                                        required: true,
+                                                                        message: "Ingresa tu nombre",
+                                                                    },
+                                                                ]}>
+
                                                         <Input placeholder="Nombres"></Input>
                                                     </Form.Item>
-                                                    <Form.Item  name="UserLastNames">
+                                                    <Form.Item  name="UserLastNames"
+                                                                rules={[
+                                                                    {
+
+                                                                        required: true,
+                                                                        message: "Ingresa tu apellido",
+                                                                    },
+                                                                ]}>
                                                         <Input placeholder="Apellidos"/>
                                                     </Form.Item>
 
@@ -240,9 +297,10 @@ const HomePage = () => {
                                                     </Form.Item>
                                                     <Form.Item
 
-                                                        name="UserEmail"
+                                                        name="email"
                                                         rules={[
                                                             {
+                                                                type: "email",
                                                                 required: true,
                                                                 message: "Ingresa un correo valido!",
                                                             },
@@ -268,61 +326,22 @@ const HomePage = () => {
                                                         rules={[
                                                             {
                                                                 required: true,
-                                                                message: "Las claves no cionciden!",
+                                                                message: "Confirmar clave",
                                                             },
+                                                            ({ getFieldValue }) => ({
+                                                                validator(_, value) {
+                                                                    if (!value || getFieldValue('password') === value) {
+                                                                        return Promise.resolve();
+                                                                    }
+                                                                    return Promise.reject(new Error('Las contraseñas no coinciden'));
+                                                                },
+                                                            }),
                                                         ]}
                                                     >
                                                         <Input.Password placeholder="Confirmar clave"/>
                                                     </Form.Item>
 
-                            <Form.Item
-                              label="Fecha Nacimiento"
-                              name="UserDate"
-                              rules={[
-                                {
-                                  required: true,
-                                  message: "Ingresa una fecha valida!",
-                                },
-                              ]}
-                            >
-                              <Input />
-                            </Form.Item>
-                            <Form.Item
-                              label="E-mail"
-                              name="UserEmail"
-                              rules={[
-                                {
-                                  required: true,
-                                  message: "Ingresa un correo valido!",
-                                },
-                              ]}
-                            >
-                              <Input />
-                            </Form.Item>
-                            <Form.Item
-                              label="Clave"
-                              name="password"
-                              rules={[
-                                {
-                                  required: true,
-                                  message: "Ingresa una clave valida!",
-                                },
-                              ]}
-                            >
-                              <Input.Password />
-                            </Form.Item>
-                            <Form.Item
-                              label="Confirmar clave"
-                              name="passwordConfirm"
-                              rules={[
-                                {
-                                  required: true,
-                                  message: "Las claves no cionciden!",
-                                },
-                              ]}
-                            >
-                              <Input.Password />
-                            </Form.Item>
+
 
                             <Form.Item name="remember" valuePropName="checked">
                               <Checkbox>Recordarme</Checkbox>
@@ -330,8 +349,8 @@ const HomePage = () => {
 
 
                             <Form.Item>
-                              <Button type="primary" htmlType="submit">
-                                Registrarse{" "}
+                              <Button type="primary" htmlType="submit" loading={loading}>
+                                Registrarse
                               </Button>
                             </Form.Item>
                           </Form>
@@ -438,4 +457,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default withoutAuth(HomePage);

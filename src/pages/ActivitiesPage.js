@@ -4,6 +4,7 @@ import ActivitiesList from '../components/ActivitiesList';
 import {Link} from "react-router-dom";
 import Routes from "../constants/routes";
 import "../styles/home.css";
+import withAuth from "../hocs/withAuth";
 const ActivitiesPage = () => {
 
   const [isModalVisiblePrf, setIsModalVisiblePrf] = useState(false);
@@ -97,10 +98,7 @@ const ActivitiesPage = () => {
               <Col span={6}></Col>
             </Row>
           </Col>
-          <Col span={8} offset={8}>
 
-            <Link to={Routes.HOME}><Button type="primary">Cerrar Sesión</Button></Link>
-          </Col>
         </Row>
 
 
@@ -109,4 +107,4 @@ const ActivitiesPage = () => {
   );
 };
 
-export default ActivitiesPage;
+export default withAuth(ActivitiesPage);
