@@ -73,6 +73,7 @@ const ActivitiesPage = () => {
             <Col span={6}></Col>
             <Col span={12} type="flex" align="middle">
               <Space direction="vertical">
+                <br></br>
                 <Button type="primary" id="but-reg" onClick={showModalPra}>
                   Añadir Actividad
                 </Button>
@@ -133,13 +134,6 @@ const ActivitiesPage = () => {
             </Col>
             <Col span={6}></Col>
           </Row>
-        </Col>
-        <Col span={8} offset={8}>
-          <Link to={Routes.HOME}>
-            <Button id="but-reg" type="primary">
-              Cerrar Sesión
-            </Button>
-          </Link>
         </Col>
       </Row>
 
