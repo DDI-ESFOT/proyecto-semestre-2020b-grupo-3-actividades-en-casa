@@ -16,7 +16,16 @@ import ActivitiesList from "../components/ActivitiesList";
 import { Link } from "react-router-dom";
 import Routes from "../constants/routes";
 import "../styles/home.css";
-import { FormOutlined } from "@ant-design/icons";
+
+import withAuth from "../hocs/withAuth";
+
+
+import {
+  FormOutlined,
+  UsergroupAddOutlined 
+} from "@ant-design/icons";
+
+
 
 const ActivitiesPage = () => {
   const [isModalVisiblePra, setIsModalVisiblePra] = useState(false);
@@ -142,7 +151,8 @@ const ActivitiesPage = () => {
 
       <ActivitiesList />
     </div>
+
   );
 };
 
-export default ActivitiesPage;
+export default withAuth(ActivitiesPage);

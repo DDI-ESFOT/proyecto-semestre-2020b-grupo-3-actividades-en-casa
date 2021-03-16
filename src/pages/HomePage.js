@@ -1,5 +1,6 @@
 import "../styles/WFirst.css";
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
+import UploadOutlined from "@ant-design/icons";
 
 import { UserOutlined, UserAddOutlined } from "@ant-design/icons";
 import {
@@ -15,6 +16,8 @@ import {
   Checkbox,
   DatePicker,
   Image,
+  message,
+    Upload,
 } from "antd";
 
 import imgheader from "../images/imgheader.jpg";
@@ -23,6 +26,12 @@ import imgb2 from "../images/imgbody2.jpg";
 import imgb3 from "../images/imgbody3.jpg";
 
 import { Carousel } from "antd";
+import {auth} from "../firebase";
+import translateMessage from "../utils/translateMessage";
+import {useAuth} from "../lib/auth";
+import { useHistory} from "react-router-dom";
+import Routes from "../constants/routes";
+import withoutAuth from "../hocs/withoutAuth";
 
 const HomePage = () => {
   const contentStyle = {
@@ -36,18 +45,39 @@ const HomePage = () => {
   const { Header, Content } = Layout;
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isModalVisible2, setIsModalVisible2] = useState(false);
+  const [loading, setLoading] = useState(false);
   const { Title } = Typography;
 
-  const onFinish = (values) => {
-    console.log("Success:", values);
+  const {login, register, user} = useAuth();
+  const history = useHistory();
+
+
+    const normFile = (e) => {
+        console.log('Upload event:', e);
+        if (Array.isArray(e)) {
+            return e;
+        }
+        return e && e.fileList;
+    };
+  const onFinish = ({email, password}) => {
+
+      login(email,password);
+
   };
 
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
 
-  const onFinish2 = (values) => {
-    console.log("Success:", values);
+  const onFinish2 = async (data) => {
+      console.log(data)
+      setLoading(true);
+     await register({
+          ...data,
+          image: data.image[0].Target
+      });
+     setLoading(false);
+
   };
 
   const onFinishFailed2 = (errorInfo) => {
@@ -75,6 +105,7 @@ const HomePage = () => {
   const handleCancel2 = () => {
     setIsModalVisible(false);
   };
+
 
   function onChange(date, dateString) {
     console.log(date, dateString);
@@ -130,9 +161,10 @@ const HomePage = () => {
                             <br></br>
                             <Form.Item
                               label="E-mail"
-                              name="username"
+                              name="email"
                               rules={[
                                 {
+                                    type: "email",
                                   required: true,
                                   message: "Ingresa un correo valido!",
                                 },
@@ -176,8 +208,11 @@ const HomePage = () => {
                 </Col>
                 <Col span={12}>
                   <Button type="primary" onClick={showModal}>
-                    Registrarse
+
+
+                    Registrese
                   </Button>
+
                   <Modal
                     title="ACTIVIDADES EN CASA"
                     visible={isModalVisible}
@@ -209,67 +244,147 @@ const HomePage = () => {
                               <Input placeholder="Apellido" />
                             </Form.Item>
 
-                            <Form.Item>
-                              <DatePicker onChange={onChange} />
-                            </Form.Item>
-                            <Form.Item
-                              name="UserEmail"
-                              rules={[
-                                {
-                                  required: true,
-                                  message: "Ingresa un correo valido!",
-                                },
-                              ]}
-                            >
-                              <Input placeholder="Correo electronico" />
-                            </Form.Item>
-                            <Form.Item
-                              name="password"
-                              rules={[
-                                {
-                                  required: true,
-                                  message: "Ingresa una clave valida!",
-                                },
-                              ]}
-                            >
-                              <Input.Password placeholder="Contraseña" />
-                            </Form.Item>
-                            <Form.Item
-                              name="passwordConfirm"
-                              rules={[
-                                {
-                                  required: true,
-                                  message: "Las claves no cionciden!",
-                                },
-                                ({ getFieldValue }) => ({
-                                  validator(_, value) {
-                                    if (
-                                      !value ||
-                                      getFieldValue("password") === value
-                                    ) {
-                                      return Promise.resolve();
-                                    }
-                                    return Promise.reject(
-                                      new Error("Las contraseñas no coinciden")
-                                    );
-                                  },
-                                }),
-                              ]}
-                            >
-                              <Input.Password placeholder="Confirmar Contraseña" />
-                            </Form.Item>
+
+                                                    <Form.Item>
+                                                        <Button type="primary" htmlType="submit">
+                                                            Iniciar Sesión
+                                                        </Button>
+                                                    </Form.Item>
+                                                </Form>
+                                            </Space>
+                                        </Col>
+                                        <Col span={6}></Col>
+                                    </Row>
+                                </Modal>
+                            </Col>
+                            <Col span={12}>
+
+                                <Modal
+                                    title="ACTIVIDADES EN CASA"
+                                    visible={isModalVisible}
+                                    onOk={handleOk}
+                                    onCancel={handleCancel}
+                                >
+                                    <Title level={2} ype="flex" align="middle">
+                                        REGISTRATE{" "}
+                                    </Title>
+                                    <Row>
+                                        <Col span={6}></Col>
+                                        <Col span={12} type="flex" align="middle">
+                                            <Space direction="vertical">
+                                                <Form
+                                                    name="basic"
+                                                    initialValues={{ remember: true }}
+                                                    onFinish={onFinish2}
+                                                    onFinishFailed={onFinishFailed2}
+                                                >
+                                                    <Form.Item
+                                                        name="image"
+                                                        label="Foto"
+                                                        valuePropName="fileList"
+                                                        getValueFromEvent={normFile}
+                                                        extra="Selecciona una foto"
+                                                    >
+                                                        <Upload name="logo" action={null} listType="picture">
+                                                            <Button icon={<UploadOutlined />}>Selecciona una foto</Button>
+                                                        </Upload>
+                                                    </Form.Item>
+                                                    <Form.Item  name="UserNames"
+                                                                rules={[
+                                                                    {
+
+                                                                        required: true,
+                                                                        message: "Ingresa tu nombre",
+                                                                    },
+                                                                ]}>
+
+                                                        <Input placeholder="Nombres"></Input>
+                                                    </Form.Item>
+                                                    <Form.Item  name="UserLastNames"
+                                                                rules={[
+                                                                    {
+
+                                                                        required: true,
+                                                                        message: "Ingresa tu apellido",
+                                                                    },
+                                                                ]}>
+                                                        <Input placeholder="Apellidos"/>
+                                                    </Form.Item>
+
+                                                    <Form.Item
+
+                                                        name="UserDate"
+                                                        rules={[
+                                                            {
+
+                                                                required: true,
+                                                                message: "Ingresa una fecha valida!",
+                                                            },
+                                                        ]}
+                                                    >
+                                                        <Input placeholder="Fecha Nacimiento"/>
+                                                    </Form.Item>
+                                                    <Form.Item
+
+                                                        name="email"
+                                                        rules={[
+                                                            {
+                                                                type: "email",
+                                                                required: true,
+                                                                message: "Ingresa un correo valido!",
+                                                            },
+                                                        ]}
+                                                    >
+                                                        <Input placeholder="E-mail"/>
+                                                    </Form.Item>
+                                                    <Form.Item
+
+                                                        name="password"
+                                                        rules={[
+                                                            {
+                                                                required: true,
+                                                                message: "Ingresa una clave valida!",
+                                                            },
+                                                        ]}
+                                                    >
+                                                        <Input.Password placeholder="Clave"/>
+                                                    </Form.Item>
+                                                    <Form.Item
+
+                                                        name="passwordConfirm"
+                                                        rules={[
+                                                            {
+                                                                required: true,
+                                                                message: "Confirmar clave",
+                                                            },
+                                                            ({ getFieldValue }) => ({
+                                                                validator(_, value) {
+                                                                    if (!value || getFieldValue('password') === value) {
+                                                                        return Promise.resolve();
+                                                                    }
+                                                                    return Promise.reject(new Error('Las contraseñas no coinciden'));
+                                                                },
+                                                            }),
+                                                        ]}
+                                                    >
+                                                        <Input.Password placeholder="Confirmar clave"/>
+                                                    </Form.Item>
+
 
                             <Form.Item name="remember" valuePropName="checked">
                               <Checkbox>Recordarme</Checkbox>
                             </Form.Item>
 
                             <Form.Item>
+
                               <Button
                                 id="but-mod"
                                 type="primary"
                                 htmlType="submit"
+                        loading={loading}
                               >
                                 Registrarse{" "}
+
                               </Button>
                             </Form.Item>
                           </Form>
@@ -375,4 +490,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default withoutAuth(HomePage);
