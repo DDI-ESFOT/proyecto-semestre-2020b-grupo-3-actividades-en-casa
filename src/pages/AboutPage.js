@@ -115,7 +115,7 @@ const AboutPage = () => {
             <Col span={8}><img id="im-about" src={avatar4} alt="header" width="300" height="300" /> </Col>
             <Col span={1}></Col>
             <Col span={10} type="flex" align="middle">
-              <Title level={2} id="name" type="flex" align="middle">Jefferson Llumiquinga</Title>
+              <Title level={2} id="name" type="flex" align="middle">Jefferson Ricardo Llumiquinga Llumiquinga</Title>
               <Title id="titu-col" level={5} >
                Mi nombre es Jefferson Llumiquinga estudiante 
                de la Escuela Politécnica Nacional de la carrera de Análisis de Sistemas Informáticos en base
