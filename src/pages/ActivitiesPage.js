@@ -1,20 +1,27 @@
 import React, { useState } from 'react';
-import { Row, Col, Typography, Input, Button, Space, Modal, Form, DatePicker } from 'antd';
+import { Row, Col, Typography, Input, Button, Space, Modal, Form, DatePicker,Select } from 'antd';
+
 
 import ActivitiesList from '../components/ActivitiesList';
 import { Link } from "react-router-dom";
 import Routes from "../constants/routes";
 import "../styles/home.css";
 
+
 import {
   FormOutlined,
   UsergroupAddOutlined 
 } from "@ant-design/icons";
 
+const { Option } = Select;
+
 const ActivitiesPage = () => {
+
+  const [form] = Form.useForm();
 
   const [isModalVisiblePrf, setIsModalVisiblePrf] = useState(false);
   const [isModalVisiblePra, setIsModalVisiblePra] = useState(false);
+
 
   const showModalPra = () => {
     setIsModalVisiblePra(true);
@@ -49,6 +56,8 @@ const ActivitiesPage = () => {
     console.log("Failed:", errorInfo);
   };
 
+ 
+
   const onFinish2 = (values) => {
     console.log("Success:", values);
   };
@@ -60,6 +69,10 @@ const ActivitiesPage = () => {
   function onChange(date, dateString) {
     console.log(date, dateString);
   }
+
+  const onReset = () => {
+    form.resetFields();
+  };
 
   const { Title } = Typography;
  
@@ -143,6 +156,7 @@ const ActivitiesPage = () => {
                     <Col span={12} type="flex" align="middle">
                       <Space direction="vertical">
                         <Form
+                         form={form}
                           name="basic"
                           initialValues={{ remember: true }}
                           onFinish={onFinish}
@@ -153,6 +167,7 @@ const ActivitiesPage = () => {
                             name="Actividad"
                           >
                             <Input placeholder="Actividad" />
+                            
                           </Form.Item>
                           <Form.Item
                             name="FechaActividad"
@@ -162,11 +177,11 @@ const ActivitiesPage = () => {
                           <Form.Item
                             name="Persona"
                           >
-                            <Input placeholder="Persona" />
+                            <Input placeholder="Nombre Familiar" />
                           </Form.Item>
                           <Form.Item>
-                            <Button  id="but-mod"  type="primary" htmlType="submit">
-                              Iniciar Sesión
+                            <Button  id="but-mod"  type="primary" htmlType="submit" onClick={onReset}>
+                              REGISTRAAAR
                              </Button>
                           </Form.Item>
                         </Form>
