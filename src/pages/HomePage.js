@@ -16,11 +16,16 @@ import {
     Image, message,
     Upload
 } from "antd";
+import UserOutlined,
+  UserAddOutlined
+} from "@ant-design/icons";
+
 
 import imgheader from "../images/imgheader.jpg";
 import imgb1 from "../images/imgbody1.jpg";
 import imgb2 from "../images/imgbody2.jpg";
 import imgb3 from "../images/imgbody3.jpg";
+
 import { Carousel } from "antd";
 import {auth} from "../firebase";
 import translateMessage from "../utils/translateMessage";
@@ -28,6 +33,7 @@ import {useAuth} from "../lib/auth";
 import { useHistory} from "react-router-dom";
 import Routes from "../constants/routes";
 import withoutAuth from "../hocs/withoutAuth";
+
 
 const HomePage = () => {
   const contentStyle = {
@@ -38,7 +44,8 @@ const HomePage = () => {
     background: "#364d79",
   };
 
-  const { Header, Content} = Layout;
+
+  const { Header, Content } = Layout;
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isModalVisible2, setIsModalVisible2] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -98,10 +105,15 @@ const HomePage = () => {
   const handleOk2 = () => {
     setIsModalVisible2(false);
   };
-
   const handleCancel2 = () => {
-    setIsModalVisible2(false);
+    setIsModalVisible(false);
   };
+
+
+  function onChange(date, dateString) {
+    console.log(date, dateString);
+  }
+
 
 
   return (
@@ -114,25 +126,29 @@ const HomePage = () => {
         </Header>
 
         <Content className="main-content">
-          <Row type="flex" align="middle" id="fil1">
-            <Col span={4}></Col>
-            <Col span={10} type="flex" align="middle">
+          <Row id="fil1">
+            <Col span={5}></Col>
+            <Col span={8} type="flex" align="middle">
+              <br></br>
+              <br></br>
               <Title level={4} id="headt">UNA FORMA DIVERTIDA DE HACER TRABAJOS EN CASA</Title>
               <Row>
                 <Col span={12}>
                   <Button type="primary" onClick={showModal2}>
-                    Iniciar Sesión
-                  </Button>
+                    Inciar Sesion
+                                </Button>
                   <Modal
                     title="ACTIVIDADES EN CASA"
                     visible={isModalVisible2}
                     onOk={handleOk2}
                     onCancel={handleCancel2}
                   >
-                    <Title level={2} type="flex" align="middle">
-                      INICIO DE SESIÓN{" "}
-                    </Title>
-                    <Row>
+
+                    <Row id="mod-head">
+                      <Col span={24}><Title level={2} align="middle">
+                        <UserOutlined />INICIO DE SESION{" "}
+                      </Title></Col></Row>
+                    <Row id="mod-back">
                       <Col span={6}></Col>
                       <Col span={12} type="flex" align="middle">
                         <Space direction="vertical">
@@ -142,6 +158,7 @@ const HomePage = () => {
                             onFinish={onFinish}
                             onFinishFailed={onFinishFailed}
                           >
+                            <br></br>
                             <Form.Item
                               label="E-mail"
                               name="email"
@@ -169,14 +186,19 @@ const HomePage = () => {
                               <Input.Password />
                             </Form.Item>
 
+
+
+
+
                             <Form.Item name="remember" valuePropName="checked">
                               <Checkbox>Recordarme</Checkbox>
                             </Form.Item>
 
+
                             <Form.Item>
-                              <Button type="primary" htmlType="submit">
+                              <Button id="but-mod" type="primary" htmlType="submit">
                                 Iniciar Sesión
-                              </Button>
+                                                        </Button>
                             </Form.Item>
                           </Form>
                         </Space>
@@ -187,18 +209,21 @@ const HomePage = () => {
                 </Col>
                 <Col span={12}>
                   <Button type="primary" onClick={showModal}>
+
                     Registrese
                   </Button>
+
                   <Modal
                     title="ACTIVIDADES EN CASA"
                     visible={isModalVisible}
                     onOk={handleOk}
                     onCancel={handleCancel}
                   >
-                    <Title level={2} ype="flex" align="middle">
-                      REGISTRATE{" "}
-                    </Title>
-                    <Row>
+                    <Row id="mod-head">
+                      <Col span={24}><Title level={2} align="middle">
+                        <UserAddOutlined /> REGISTRATE{" "}
+                      </Title></Col></Row>
+                    <Row id="mod-back">
                       <Col span={6}></Col>
                       <Col span={12} type="flex" align="middle">
                         <Space direction="vertical">
@@ -208,12 +233,14 @@ const HomePage = () => {
                             onFinish={onFinish2}
                             onFinishFailed={onFinishFailed2}
                           >
-                            <Form.Item label="Nombres" name="UserNames">
-                              <Input />
+                            <br></br>
+                            <Form.Item name="UserNames">
+                              <Input placeholder="Nombre" />
                             </Form.Item>
-                            <Form.Item label="Apellidos" name="UserLastNames">
-                              <Input />
+                            <Form.Item name="UserLastNames">
+                              <Input placeholder="Apellido" />
                             </Form.Item>
+
 
 
                                                     <Form.Item>
@@ -342,15 +369,15 @@ const HomePage = () => {
                                                     </Form.Item>
 
 
-
                             <Form.Item name="remember" valuePropName="checked">
                               <Checkbox>Recordarme</Checkbox>
                             </Form.Item>
 
-
                             <Form.Item>
+
                               <Button type="primary" htmlType="submit" loading={loading}>
                                 Registrarse
+
                               </Button>
                             </Form.Item>
                           </Form>
@@ -362,9 +389,8 @@ const HomePage = () => {
                 </Col>
               </Row>
             </Col>
-
-            <Col span={10} type="flex" align="right">
-              <img src={imgheader} alt="header" width="100%" height="100%" />
+            <Col span={11} type="flex" align="right">
+              <img src={imgheader} alt="header" width="400" height="200" />
             </Col>
           </Row>
           <br></br>
@@ -375,7 +401,7 @@ const HomePage = () => {
                 <Row>
                   <Col span={3}></Col>
                   <Col span={18} type="flex" align="middle">
-                    <Image src={imgb1} alt="header" id="imge"/>
+                    <Image src={imgb1} alt="header" id="imge" />
                   </Col>
                   <Col span={3}></Col>
                 </Row>
@@ -401,7 +427,7 @@ const HomePage = () => {
                 <Row>
                   <Col span={3}></Col>
                   <Col span={18} type="flex" align="middle">
-                    <Image src={imgb2} alt="header"  id="imge"/>
+                    <Image src={imgb2} alt="header" id="imge" />
                   </Col>
                   <Col span={3}></Col>
                 </Row>
@@ -427,7 +453,7 @@ const HomePage = () => {
                 <Row>
                   <Col span={3}></Col>
                   <Col span={18} type="flex" align="middle">
-                    <Image src={imgb3} alt="header"  id="imge"/>
+                    <Image src={imgb3} alt="header" id="imge" />
                   </Col>
                   <Col span={3}></Col>
                 </Row>
@@ -452,9 +478,11 @@ const HomePage = () => {
           </Carousel>
           <br></br>
         </Content>
+
       </Layout>
     </>
   );
+
 };
 
 export default withoutAuth(HomePage);

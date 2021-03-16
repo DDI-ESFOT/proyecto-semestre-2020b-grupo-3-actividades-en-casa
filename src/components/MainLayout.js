@@ -2,7 +2,8 @@ import React from "react";
 import {
     Row,
     Col,
-    Layout,
+    Layout
+
 } from "antd";
 
 import MainMenu from "./MainMenu";
@@ -18,7 +19,9 @@ import {
 import foot from "../images/imgfoot.jpg";
 import "../styles/WFirst.css";
 
-const { Header, Content, Footer} = Layout;
+
+const { Header, Content, Footer } = Layout;
+
 
 const MainLayout = ({ children }) => {
 

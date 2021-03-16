@@ -3,6 +3,7 @@ import React, {useEffect} from "react";
 import MainLayout from "./MainLayout";
 import HomePage from "../pages/HomePage";
 import { BrowserRouter as Router, Switch, Route, useHistory} from "react-router-dom";
+
 import AboutPage from "../pages/AboutPage";
 import ActivitiesPage from "../pages/ActivitiesPage";
 import NotFoundPage from "../pages/NotFoundPage";

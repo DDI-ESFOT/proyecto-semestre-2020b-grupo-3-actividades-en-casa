@@ -28,7 +28,13 @@
 .text{
     text-align: center;
 }
-#espacio2{
+.espacio2{
     padding-top: 10px;
     width: 100%;
+    background-color:#ADB896;
+}
+
+#but-reg {
+    background-color: grey;
+    border-color: black;
 }
