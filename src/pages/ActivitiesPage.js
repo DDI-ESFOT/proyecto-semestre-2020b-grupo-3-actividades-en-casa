@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Row, Col, Typography, Input, Button, Space, Modal, Form, DatePicker,Select } from 'antd';
+import { Row, Col, Typography, Input, Button, Space, Modal, Form, DatePicker } from 'antd';
 
 
 import ActivitiesList from '../components/ActivitiesList';
@@ -13,7 +13,7 @@ import {
   UsergroupAddOutlined 
 } from "@ant-design/icons";
 
-const { Option } = Select;
+
 
 const ActivitiesPage = () => {
 
