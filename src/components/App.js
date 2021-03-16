@@ -6,10 +6,12 @@ import { BrowserRouter as Router, Switch, Route, useHistory} from "react-router-
 
 import AboutPage from "../pages/AboutPage";
 import ActivitiesPage from "../pages/ActivitiesPage";
+
 import NotFoundPage from "../pages/NotFoundPage";
 import {auth} from "../firebase";
 import Routes from "../constants/routes";
 import {AuthProvider} from "../lib/auth";
+
 
 function App() {
   let history = useHistory();
@@ -28,9 +30,6 @@ function App() {
             </Route>
             <Route path="/actividades">
               <ActivitiesPage />
-            </Route>
-            <Route>
-              <NotFoundPage />
             </Route>
           </Switch>
         </MainLayout>

@@ -2,24 +2,23 @@ import "../styles/WFirst.css";
 import React, {useEffect, useState} from "react";
 import UploadOutlined from "@ant-design/icons";
 
+import { UserOutlined, UserAddOutlined } from "@ant-design/icons";
 import {
-    Button,
-    Row,
-    Col,
-    Layout,
-    Space,
-    Modal,
-    Input,
-    Typography,
-    Form,
-    Checkbox,
-    Image, message,
-    Upload
+  Button,
+  Row,
+  Col,
+  Layout,
+  Space,
+  Modal,
+  Input,
+  Typography,
+  Form,
+  Checkbox,
+  DatePicker,
+  Image,
+  message,
+    Upload,
 } from "antd";
-import UserOutlined,
-  UserAddOutlined
-} from "@ant-design/icons";
-
 
 import imgheader from "../images/imgheader.jpg";
 import imgb1 from "../images/imgbody1.jpg";
@@ -34,7 +33,6 @@ import { useHistory} from "react-router-dom";
 import Routes from "../constants/routes";
 import withoutAuth from "../hocs/withoutAuth";
 
-
 const HomePage = () => {
   const contentStyle = {
     height: "160px",
@@ -43,7 +41,6 @@ const HomePage = () => {
     textAlign: "center",
     background: "#364d79",
   };
-
 
   const { Header, Content } = Layout;
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -114,8 +111,6 @@ const HomePage = () => {
     console.log(date, dateString);
   }
 
-
-
   return (
     <>
       <Layout className="layout">
@@ -131,23 +126,28 @@ const HomePage = () => {
             <Col span={8} type="flex" align="middle">
               <br></br>
               <br></br>
-              <Title level={4} id="headt">UNA FORMA DIVERTIDA DE HACER TRABAJOS EN CASA</Title>
+              <Title level={4} id="headt">
+                UNA FORMA DIVERTIDA DE HACER TRABAJOS EN CASA
+              </Title>
               <Row>
                 <Col span={12}>
                   <Button type="primary" onClick={showModal2}>
                     Inciar Sesion
-                                </Button>
+                  </Button>
                   <Modal
                     title="ACTIVIDADES EN CASA"
                     visible={isModalVisible2}
                     onOk={handleOk2}
                     onCancel={handleCancel2}
                   >
-
                     <Row id="mod-head">
-                      <Col span={24}><Title level={2} align="middle">
-                        <UserOutlined />INICIO DE SESION{" "}
-                      </Title></Col></Row>
+                      <Col span={24}>
+                        <Title level={2} align="middle">
+                          <UserOutlined />
+                          INICIO DE SESION{" "}
+                        </Title>
+                      </Col>
+                    </Row>
                     <Row id="mod-back">
                       <Col span={6}></Col>
                       <Col span={12} type="flex" align="middle">
@@ -186,19 +186,18 @@ const HomePage = () => {
                               <Input.Password />
                             </Form.Item>
 
-
-
-
-
                             <Form.Item name="remember" valuePropName="checked">
                               <Checkbox>Recordarme</Checkbox>
                             </Form.Item>
 
-
                             <Form.Item>
-                              <Button id="but-mod" type="primary" htmlType="submit">
+                              <Button
+                                id="but-mod"
+                                type="primary"
+                                htmlType="submit"
+                              >
                                 Iniciar Sesión
-                                                        </Button>
+                              </Button>
                             </Form.Item>
                           </Form>
                         </Space>
@@ -210,6 +209,7 @@ const HomePage = () => {
                 <Col span={12}>
                   <Button type="primary" onClick={showModal}>
 
+
                     Registrese
                   </Button>
 
@@ -220,9 +220,12 @@ const HomePage = () => {
                     onCancel={handleCancel}
                   >
                     <Row id="mod-head">
-                      <Col span={24}><Title level={2} align="middle">
-                        <UserAddOutlined /> REGISTRATE{" "}
-                      </Title></Col></Row>
+                      <Col span={24}>
+                        <Title level={2} align="middle">
+                          <UserAddOutlined /> REGISTRATE{" "}
+                        </Title>
+                      </Col>
+                    </Row>
                     <Row id="mod-back">
                       <Col span={6}></Col>
                       <Col span={12} type="flex" align="middle">
@@ -240,7 +243,6 @@ const HomePage = () => {
                             <Form.Item name="UserLastNames">
                               <Input placeholder="Apellido" />
                             </Form.Item>
-
 
 
                                                     <Form.Item>
@@ -375,8 +377,13 @@ const HomePage = () => {
 
                             <Form.Item>
 
-                              <Button type="primary" htmlType="submit" loading={loading}>
-                                Registrarse
+                              <Button
+                                id="but-mod"
+                                type="primary"
+                                htmlType="submit"
+                        loading={loading}
+                              >
+                                Registrarse{" "}
 
                               </Button>
                             </Form.Item>
@@ -390,7 +397,7 @@ const HomePage = () => {
               </Row>
             </Col>
             <Col span={11} type="flex" align="right">
-              <img src={imgheader} alt="header" width="400" height="200" />
+              <img src={imgheader} alt="header" width="100%" height="100%" />
             </Col>
           </Row>
           <br></br>
@@ -478,11 +485,9 @@ const HomePage = () => {
           </Carousel>
           <br></br>
         </Content>
-
       </Layout>
     </>
   );
-
 };
 
 export default withoutAuth(HomePage);
