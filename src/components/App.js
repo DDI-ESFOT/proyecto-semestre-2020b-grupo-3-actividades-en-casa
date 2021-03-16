@@ -7,7 +7,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import AboutPage from "../pages/AboutPage";
 import ActivitiesPage from "../pages/ActivitiesPage";
-import NotFoundPage from "../pages/NotFoundPage";
 
 function App() {
   return (
@@ -23,9 +22,6 @@ function App() {
             </Route>
             <Route path="/actividades">
               <ActivitiesPage />
-            </Route>
-            <Route>
-              <NotFoundPage />
             </Route>
           </Switch>
         </MainLayout>
