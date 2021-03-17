@@ -1,7 +1,6 @@
 import "../styles/WFirst.css";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import UploadOutlined from "@ant-design/icons";
-
 import { UserOutlined, UserAddOutlined } from "@ant-design/icons";
 import {
   Button,
@@ -14,23 +13,15 @@ import {
   Typography,
   Form,
   Checkbox,
-  DatePicker,
   Image,
-  message,
   Upload,
 } from "antd";
-
 import imgheader from "../images/imgheader.jpg";
 import imgb1 from "../images/imgbody1.jpg";
 import imgb2 from "../images/imgbody2.jpg";
 import imgb3 from "../images/imgbody3.jpg";
-
 import { Carousel } from "antd";
-import { auth } from "../firebase";
-import translateMessage from "../utils/translateMessage";
 import { useAuth } from "../lib/auth";
-import { useHistory } from "react-router-dom";
-import Routes from "../constants/routes";
 import withoutAuth from "../hocs/withoutAuth";
 
 const HomePage = () => {
@@ -47,9 +38,7 @@ const HomePage = () => {
   const [isModalVisible2, setIsModalVisible2] = useState(false);
   const [loading, setLoading] = useState(false);
   const { Title } = Typography;
-
-  const { login, register, user } = useAuth();
-  const history = useHistory();
+  const { login, register } = useAuth();
 
   const normFile = (e) => {
     console.log("Upload event:", e);
@@ -71,7 +60,7 @@ const HomePage = () => {
     setLoading(true);
     await register({
       ...data,
-      image: data.image[0].Target,
+      image: data.image[0].originFileObj,
     });
     setLoading(false);
   };
@@ -101,10 +90,6 @@ const HomePage = () => {
   const handleCancel2 = () => {
     setIsModalVisible(false);
   };
-
-  function onChange(date, dateString) {
-    console.log(date, dateString);
-  }
 
   return (
     <>

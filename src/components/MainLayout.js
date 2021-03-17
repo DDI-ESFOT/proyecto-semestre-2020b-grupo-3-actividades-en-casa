@@ -1,8 +1,6 @@
 import React from "react";
 import { Row, Col, Layout } from "antd";
-
 import MainMenu from "./MainMenu";
-
 import {
   InstagramOutlined,
   FacebookOutlined,
@@ -10,7 +8,6 @@ import {
   MailOutlined,
   WhatsAppOutlined,
 } from "@ant-design/icons";
-
 import foot from "../images/imgfoot.jpg";
 import "../styles/WFirst.css";
 
@@ -62,12 +59,6 @@ const MainLayout = ({ children }) => {
               familiar, somos un equipo que pensamos en la familia y miramos
               como ayudarlos a tener una mayor comunicación
             </p>
-
-            <a
-              href="https://grupomenta.com"
-              rel="noopener noreferrer"
-              target="_blank"
-            ></a>
           </Col>
 
           <Col

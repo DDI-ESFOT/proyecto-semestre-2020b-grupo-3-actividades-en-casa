@@ -11,19 +11,16 @@ import {
   Form,
   DatePicker,
 } from "antd";
-
 import ActivitiesList from "../components/ActivitiesList";
-import { Link } from "react-router-dom";
-import Routes from "../constants/routes";
 import "../styles/home.css";
-
 import withAuth from "../hocs/withAuth";
-
-import { FormOutlined, UsergroupAddOutlined } from "@ant-design/icons";
+import { FormOutlined } from "@ant-design/icons";
+import { useAuth } from "../lib/auth";
 
 const ActivitiesPage = () => {
   const [isModalVisiblePra, setIsModalVisiblePra] = useState(false);
   const [form] = Form.useForm();
+  const { user } = useAuth();
 
   const showModalPra = () => {
     setIsModalVisiblePra(true);
@@ -54,7 +51,7 @@ const ActivitiesPage = () => {
     const date = document.querySelector("#date").value;
     const nameF = document.querySelector("#nameF").value;
 
-    await db.ref("Familiares").push({
+    await db.ref(`users/${user.uid}/task`).push({
       activity: activity,
       date: date,
       name: nameF,

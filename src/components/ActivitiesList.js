@@ -1,37 +1,37 @@
 import React from "react";
-
 import { Button, Table, Tag, Space } from "antd";
 import { useEffect, useState } from "react";
 import { DeleteOutlined, CheckOutlined } from "@ant-design/icons";
 import { db } from "../firebase";
+import { useAuth } from "../lib/auth";
 
 const ActivitiesList = () => {
-  const [users, setUsers] = useState([]);
+  const [tasks, setTasks] = useState([]);
+  const { user } = useAuth();
+  //Leyendo la base de datos
   useEffect(() => {
-    const getUsers = async () => {
-      db.ref("Familiares").on("value", (snapshot) => {
-        const toDoList = [];
+    const getTask = async () => {
+      db.ref(`users/${user.uid}/task`).on("value", (snapshot) => {
+        const taskList = [];
         snapshot.forEach((userSnapshot) => {
-          toDoList.push({ id: userSnapshot.key, ...userSnapshot.val() });
+          taskList.push({ id: userSnapshot.key, ...userSnapshot.val() });
         });
-        setUsers(toDoList);
-        //console.log("Arreglo", userList);
+        setTasks(taskList);
       });
     };
-    getUsers();
+    getTask();
     return () => {
-      db.ref("Familiares").off();
+      db.ref("task").off();
     };
   }, []);
 
-  console.log("Arreglo", users);
-
   const handleCompleted = async (id) => {
-    await db.ref(`Familiares/${id}/state`).set("completada");
+    await db.ref(`users/${user.uid}/task/${id}/state`).set("completada");
   };
 
   const handeDelete = async (id) => {
-    await db.ref(`Familiares/${id}`).remove();
+    await db.ref(`users/${user.uid}/task/${id}`).remove();
+
   };
 
   const columns = [
@@ -90,7 +90,7 @@ const ActivitiesList = () => {
   ];
   return (
     <div>
-      <Table dataSource={users} columns={columns} />
+      <Table dataSource={tasks} columns={columns} />
     </div>
   );
 };
