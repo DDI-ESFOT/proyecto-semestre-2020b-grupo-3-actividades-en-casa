@@ -35,6 +35,9 @@ const MainMenu = () => {
       <Menu.Item key="3">
         <Link to={Routes.ABOUT}>About</Link>
       </Menu.Item>
+      <Menu.Item key="5">
+        <Link to="notexist">No existe</Link>
+      </Menu.Item>
     </Menu>
   );
 };
