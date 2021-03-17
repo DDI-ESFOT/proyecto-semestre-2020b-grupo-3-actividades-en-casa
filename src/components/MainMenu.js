@@ -29,7 +29,7 @@ const MainMenu = () => {
         {user ? (
           <Link to={Routes.ACTIVITIES}>Actividades</Link>
         ) : (
-          <Link to={Routes.HOME}>Home</Link>
+          <Link to={Routes.HOME}>Actividades</Link>
         )}
       </Menu.Item>
       <Menu.Item key="3">
