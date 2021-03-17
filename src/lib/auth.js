@@ -56,12 +56,10 @@ function useAuthProvider() {
       });
 
       message.success("registro exitoso");
-      handleUser(user);
     } catch (error) {
       const errorCode = error.code;
 
       message.error(translateMessage(errorCode));
-      handleUser(false);
     }
   }
 
@@ -70,12 +68,10 @@ function useAuthProvider() {
       .signInWithEmailAndPassword(email, password)
       .then((user) => {
         // Signed in
-        handleUser(user);
       })
       .catch((error) => {
         const errorCode = error.code;
         message.error(translateMessage(errorCode));
-        handleUser(false);
       });
   }
 

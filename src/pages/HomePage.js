@@ -61,7 +61,7 @@ const HomePage = () => {
     setLoading(true);
     await register({
       ...data,
-      image: data.image[0].Target,
+      image: data.image[0].originFileObj,
     });
     setLoading(false);
   };
