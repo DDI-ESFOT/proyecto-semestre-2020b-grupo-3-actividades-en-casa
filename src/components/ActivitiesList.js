@@ -1,25 +1,38 @@
 import React from "react";
-import { Table } from "antd";
+
+import { Button, Table, Tag, Space } from "antd";
 import { useEffect, useState } from "react";
+import { DeleteOutlined, CheckOutlined } from "@ant-design/icons";
 import { db } from "../firebase";
+import { useAuth } from "../lib/auth";
 
 const ActivitiesList = () => {
-  const [users, setUsers] = useState([]);
+  const [tasks, setTasks] = useState([]);
+  const { user } = useAuth();
+  //Leyendo la base de datos
   useEffect(() => {
-    const getUsers = async () => {
-      db.ref("Familiares").on("value", (snapshot) => {
-        const userList = [];
+    const getTask = async () => {
+      db.ref(`users/${user.uid}/task`).on("value", (snapshot) => {
+        const taskList = [];
         snapshot.forEach((userSnapshot) => {
-          userList.push(userSnapshot.val());
+          taskList.push({ id: userSnapshot.key, ...userSnapshot.val() });
         });
-        setUsers(userList);
+        setTasks(taskList);
       });
     };
-    getUsers();
+    getTask();
     return () => {
-      db.ref("Familiares").off();
+      db.ref("task").off();
     };
   }, []);
+
+  const handleCompleted = async (id) => {
+    await db.ref(`users/${user.uid}/task/${id}/state`).set("completada");
+  };
+
+  const handeDelete = async (id) => {
+    await db.ref(`users/${user.uid}/task/${id}`).remove();
+  };
 
   const columns = [
     {
@@ -41,11 +54,43 @@ const ActivitiesList = () => {
       title: "Estado",
       dataIndex: "state",
       key: "state",
+      render: (value, row) => {
+        console.log("value", value);
+        return value === "completada" ? (
+          <Tag color="green">Completada</Tag>
+        ) : (
+          <Tag color="gold">Pendiente</Tag>
+        );
+      },
+    },
+    {
+      title: "Actualizar",
+      render: (value, row) => {
+        console.log("ROW", row);
+        return (
+          <>
+            <Space size="large">
+              <Button
+                type="primary"
+                shape="circle"
+                icon={<CheckOutlined />}
+                onClick={() => handleCompleted(row.id)}
+              ></Button>
+              <Button
+                danger
+                shape="circle"
+                icon={<DeleteOutlined />}
+                onClick={() => handeDelete(row.id)}
+              ></Button>
+            </Space>
+          </>
+        );
+      },
     },
   ];
   return (
     <div>
-      <Table dataSource={users} columns={columns} />
+      <Table dataSource={tasks} columns={columns} />
     </div>
   );
 };

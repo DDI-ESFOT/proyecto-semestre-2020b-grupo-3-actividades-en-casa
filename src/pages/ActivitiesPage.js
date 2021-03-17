@@ -11,19 +11,16 @@ import {
   Form,
   DatePicker,
 } from "antd";
-
 import ActivitiesList from "../components/ActivitiesList";
-import { Link } from "react-router-dom";
-import Routes from "../constants/routes";
 import "../styles/home.css";
-
 import withAuth from "../hocs/withAuth";
-
-import { FormOutlined, UsergroupAddOutlined } from "@ant-design/icons";
+import { FormOutlined } from "@ant-design/icons";
+import { useAuth } from "../lib/auth";
 
 const ActivitiesPage = () => {
   const [isModalVisiblePra, setIsModalVisiblePra] = useState(false);
   const [form] = Form.useForm();
+  const { user } = useAuth();
 
   const showModalPra = () => {
     setIsModalVisiblePra(true);
@@ -54,7 +51,7 @@ const ActivitiesPage = () => {
     const date = document.querySelector("#date").value;
     const nameF = document.querySelector("#nameF").value;
 
-    await db.ref("Familiares").push({
+    await db.ref(`users/${user.uid}/task`).push({
       activity: activity,
       date: date,
       name: nameF,
@@ -73,6 +70,7 @@ const ActivitiesPage = () => {
             <Col span={6}></Col>
             <Col span={12} type="flex" align="middle">
               <Space direction="vertical">
+                <br></br>
                 <Button type="primary" id="but-reg" onClick={showModalPra}>
                   Añadir Actividad
                 </Button>
@@ -133,13 +131,6 @@ const ActivitiesPage = () => {
             </Col>
             <Col span={6}></Col>
           </Row>
-        </Col>
-        <Col span={8} offset={8}>
-          <Link to={Routes.HOME}>
-            <Button id="but-reg" type="primary">
-              Cerrar Sesión
-            </Button>
-          </Link>
         </Col>
       </Row>
 

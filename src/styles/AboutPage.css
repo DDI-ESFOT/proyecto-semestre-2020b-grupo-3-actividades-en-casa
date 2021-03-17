@@ -1,20 +1,17 @@
-#titu-col{
-    color: white;
-    text-align: justify;
+#titu-col {
+  color: white;
+  text-align: justify;
 }
 #name {
-    color: #E6E6E6;
+  color: #e6e6e6;
 }
 
 #im-about {
-    border-radius: 600px;
-    border: solid 5px;
-    border-color: #848484;
+  border-radius: 600px;
+  border: solid 5px;
+  border-color: #848484;
 }
 
-
-
-
 #tit {
-    color:#848484
+  color: #848484;
 }
