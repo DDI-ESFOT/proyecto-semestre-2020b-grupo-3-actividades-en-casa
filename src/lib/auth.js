@@ -55,14 +55,14 @@ function useAuthProvider(){
                 email
             });
 
-                    message.success("registro exitoso")
-                    handleUser(user);
+            message.success("registro exitoso")
+            //handleUser(user);
         }catch(error) {
-                    const errorCode = error.code;
+            const errorCode = error.code;
 
-                    message.error(translateMessage(errorCode))
-                    handleUser(false);
-                }
+            message.error(translateMessage(errorCode))
+           // handleUser(false);
+        }
 
     }
 
@@ -70,12 +70,12 @@ function useAuthProvider(){
         auth.signInWithEmailAndPassword(email, password)
             .then((user) => {
                 // Signed in
-                handleUser(user);
+                //handleUser(user);
             })
             .catch((error) => {
                 const errorCode = error.code;
                 message.error(translateMessage(errorCode))
-                handleUser(false);
+                //handleUser(false);
             });
     }
 
@@ -117,9 +117,3 @@ function useAuthProvider(){
         logout
     };
 }
-
-
-
-
-
-
