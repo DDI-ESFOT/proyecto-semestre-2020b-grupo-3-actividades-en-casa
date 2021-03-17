@@ -37,3 +37,9 @@
   background-color: grey;
   border-color: black;
 }
+
+#imgUser {
+  border-radius: 600px;
+  border: solid 5px;
+  border-color: #848484;
+}

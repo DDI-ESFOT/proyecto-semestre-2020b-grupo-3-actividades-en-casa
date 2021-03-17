@@ -10,6 +10,8 @@ import {
   Modal,
   Form,
   DatePicker,
+  Image,
+  Alert,
 } from "antd";
 import ActivitiesList from "../components/ActivitiesList";
 import "../styles/home.css";
@@ -51,19 +53,27 @@ const ActivitiesPage = () => {
     const date = document.querySelector("#date").value;
     const nameF = document.querySelector("#nameF").value;
 
-    await db.ref(`users/${user.uid}/task`).push({
-      activity: activity,
-      date: date,
-      name: nameF,
-      state: "pendiente",
-    });
-    form.resetFields();
+    if (activity === "" || date === "" || nameF === "") {
+      <Alert
+      message="Error"
+      description="Por favor llene todos los campos"
+      type="error"
+      />
+    } else {
+      await db.ref(`users/${user.uid}/task`).push({
+        activity: activity,
+        date: date,
+        name: nameF,
+        state: "pendiente",
+      });
+      form.resetFields();
+    }
   };
 
   const { Title } = Typography;
 
   return (
-    <div className="espacio2">
+    <div className="espacio2" >
       <Row>
         <Col span={8}>
           <Row>
@@ -110,9 +120,8 @@ const ActivitiesPage = () => {
                             <Input placeholder="Nombre Familiar" id="nameF" />
                           </Form.Item>
                           <Form.Item>
-                            <Button
-                              id="but-mod"
-                              type="primary"
+                            <Button id="but-mod"   
+                              type="primary"  
                               htmlType="submit"
                               onClick={handleActivity}
                             >
@@ -129,8 +138,14 @@ const ActivitiesPage = () => {
                 <br></br>
               </Space>
             </Col>
-            <Col span={6}></Col>
           </Row>
+        </Col>
+
+        <Col lg={8} xl={8} type="flex" align="middle">
+          <Title level={2}>Bienvenido {`${user.UserNames} ${user.UserLastNames}`}</Title>   
+        </Col>
+        <Col lg={8} xl={8} type="flex" align="middle">
+          <Image src={user.imageURL} alt="photoUser" width={150} height={150} />
         </Col>
       </Row>
 

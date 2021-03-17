@@ -85,12 +85,16 @@ function useAuthProvider() {
 
   useEffect(() => {
     const init = () => {
-      auth.onAuthStateChanged((user) => {
+      auth.onAuthStateChanged(async (user) => {
         if (user) {
           // User is signed in, see docs for a list of available properties
           // https://firebase.google.com/docs/reference/js/firebase.User
           console.log("sesion activa", user);
-          handleUser(user);
+          const userSnap = await db.ref(`users/${user.uid}`).once("value");
+          const userData = userSnap.val();
+
+          handleUser({ ...user, ...userData });
+
           // history.replace(Routes.ACTIVITIES);
         } else {
           // User is signed out

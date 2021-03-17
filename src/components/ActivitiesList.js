@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Table, Tag, Space } from "antd";
+import { Button, Table, Tag, Space, Row, Col } from "antd";
 import { useEffect, useState } from "react";
 import { DeleteOutlined, CheckOutlined } from "@ant-design/icons";
 import { db } from "../firebase";
@@ -31,7 +31,6 @@ const ActivitiesList = () => {
 
   const handeDelete = async (id) => {
     await db.ref(`users/${user.uid}/task/${id}`).remove();
-
   };
 
   const columns = [
@@ -89,9 +88,13 @@ const ActivitiesList = () => {
     },
   ];
   return (
-    <div>
-      <Table dataSource={tasks} columns={columns} />
-    </div>
+    <>
+      <Row>
+        <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+          <Table dataSource={tasks} columns={columns} />
+        </Col>
+      </Row>
+    </>
   );
 };
 export default ActivitiesList;
