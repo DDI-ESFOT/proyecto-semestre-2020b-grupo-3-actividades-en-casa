@@ -2,7 +2,6 @@ import "../styles/App.css";
 import MainLayout from "./MainLayout";
 import HomePage from "../pages/HomePage";
 import { Switch, Route } from "react-router-dom";
-
 import AboutPage from "../pages/AboutPage";
 import ActivitiesPage from "../pages/ActivitiesPage";
 import { AuthProvider } from "../lib/auth";

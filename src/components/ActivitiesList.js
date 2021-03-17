@@ -31,6 +31,7 @@ const ActivitiesList = () => {
 
   const handeDelete = async (id) => {
     await db.ref(`users/${user.uid}/task/${id}`).remove();
+
   };
 
   const columns = [

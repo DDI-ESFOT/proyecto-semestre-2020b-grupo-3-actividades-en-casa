@@ -1,7 +1,9 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { auth, db, storage } from "../firebase";
 import translateMessage from "../utils/translateMessage";
+import Routes from "../constants/routes";
 import { message } from "antd";
+
 export const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
@@ -37,7 +39,6 @@ function useAuthProvider() {
         data.email,
         data.password
       );
-      console.log(user);
       const snapshot = await storage
         .ref(`users/${userData.user.uid}`)
         .put(data.image);
