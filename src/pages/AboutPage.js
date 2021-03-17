@@ -6,7 +6,7 @@ import {
   Col
 
 } from "antd";
-import avatar1 from "../images/jorge.jpg";
+import avatar1 from "../images/jorge.jpeg";
 import avatar2 from "../images/byron.jpeg";
 import avatar3 from "../images/bernabe.jpeg";
 import avatar4 from "../images/jef.jpeg";
@@ -27,11 +27,12 @@ function onChange(a, b, c) {
 }
 
 const contentStyle = {
-  height: '550px',
+  height: '560px',
   color: '#08298A',
   lineHeight: '160px',
   textAlign: 'center',
   background: '#2E2E2E',
+ 
 };
 
 const AboutPage = () => {
@@ -44,10 +45,10 @@ const AboutPage = () => {
         <h3 style={contentStyle}>
           <br></br>
           <Row>
-            <Col span={3}></Col>
-            <Col span={8}><img id="im-about" src={avatar1} alt="header" width="300" height="300" /> </Col>
-            <Col span={1}></Col>
-            <Col span={10} type="flex" align="middle">
+            <Col xs={0} sm={0} md={0} lg={3}  xl={3} ></Col>
+            <Col xs={0} sm={0} md={0} lg={8}  xl={8} type="flex" align="middle"><img id="im-about" src={avatar1} alt="header" width="300" height="300" /> </Col>
+            <Col xs={0} sm={0} md={0} lg={1}  xl={1}></Col>
+            <Col xs={24} sm={24} md={24} lg={10}  xl={10}>
               <Title level={2} id="name" type="flex" align="middle">Jorge Washington Alba Venegas</Title>
               <Title id="titu-col" level={5} >
                 Mi nombre es Jorge Alba soy estudiante de la Escuela Politecnica Nacional.
@@ -66,10 +67,10 @@ const AboutPage = () => {
         <h3 style={contentStyle}>
           <br></br>
           <Row>
-            <Col span={3}></Col>
-            <Col span={8}><img id="im-about" src={avatar2} alt="header" width="300" height="300" /> </Col>
-            <Col span={1}></Col>
-            <Col span={10} type="flex" align="middle">
+          <Col xs={0} sm={0} md={0} lg={3}  xl={3} ></Col>
+            <Col xs={0} sm={0} md={0} lg={8}  xl={8} type="flex" align="middle"><img id="im-about" src={avatar2} alt="header" width="300" height="300" /> </Col>
+            <Col xs={0} sm={0} md={0} lg={1}  xl={1}></Col>
+            <Col xs={24} sm={24} md={24} lg={10}  xl={10}>
               <Title level={2} id="name" type="flex" align="middle">Byron Sebastian Huaraca Salazar</Title>
               <Title id="titu-col" level={5} >
                 Mi nombre es Byron Huaraca soy estudiante de la Escuela Politécnica Nacional.
@@ -88,19 +89,18 @@ const AboutPage = () => {
         <h3 style={contentStyle}>
           <br></br>
           <Row>
-            <Col span={3}></Col>
-            <Col span={8}><img id="im-about" src={avatar3} alt="header" width="300" height="300" /> </Col>
-            <Col span={1}></Col>
-            <Col span={10} type="flex" align="middle">
+          <Col xs={0} sm={0} md={0} lg={3}  xl={3} ></Col>
+            <Col xs={0} sm={0} md={0} lg={8}  xl={8} type="flex" align="middle"><img id="im-about" src={avatar3} alt="header" width="300" height="300" /> </Col>
+            <Col xs={0} sm={0} md={0} lg={1}  xl={1}></Col>
+            <Col xs={24} sm={24} md={24} lg={10}  xl={10}>
               <Title level={2} id="name" type="flex" align="middle">Juan Bernabé Dávila Flores</Title>
               <Title id="titu-col" level={5} >
                 Mi nombre es Bernabé Dávila soy estudiante de la carrera de Tecnología Superior en Desarrollo de Software
                 en la Escuela Politécnica Nacional. Soy un joven que esta  enfocado en el constante aprendizaje de metodologías
                 que ayuden a diseñar  aplicaciones, buscando siempre la calidad y simplicidad en estas, para que estas brinden
                 a los usuarios una ayuda y solucion a problemas que surgen diariamente. Mi meta como desarrollador de software
-                es tener un conocimiento amplio de diferentes lenguajes de programación y obtener conocimientos avanzados en la
-                rama de la Computación para que cuando se presente un problema de esta índole, pueda solucionarlo de la mejor
-                manera.
+                es tener un conocimiento amplio de diferentes lenguajes de programación y obtener conocimientos.
+               
              </Title>
             </Col>
 
@@ -111,10 +111,10 @@ const AboutPage = () => {
         <h3 style={contentStyle}>
           <br></br>
           <Row>
-            <Col span={3}></Col>
-            <Col span={8}><img id="im-about" src={avatar4} alt="header" width="300" height="300" /> </Col>
-            <Col span={1}></Col>
-            <Col span={10} type="flex" align="middle">
+          <Col xs={0} sm={0} md={0} lg={3}  xl={3} ></Col>
+            <Col xs={0} sm={0} md={0} lg={8}  xl={8} type="flex" align="middle"><img id="im-about" src={avatar4} alt="header" width="300" height="300" /> </Col>
+            <Col xs={0} sm={0} md={0} lg={1}  xl={1}></Col>
+            <Col xs={24} sm={24} md={24} lg={10}  xl={10}>
               <Title level={2} id="name" type="flex" align="middle">Jefferson Ricardo Llumiquinga Llumiquinga</Title>
               <Title id="titu-col" level={5} >
                Mi nombre es Jefferson Llumiquinga estudiante 
@@ -132,7 +132,7 @@ const AboutPage = () => {
     <br></br>
     <div id="mvdiv">
       <Row>
-        <Col span={12}>
+        <Col md={12} lg={12} xl={12}>
           <Title level={3}>Nuestra Misión</Title>
           <Title id="tit" level={4}>Maximizar el potencial de nuestros clientes a través del uso de Internet relacioando a la orgnizacion del hogar.</Title>
           <Title level={3}>Nuestros valores como equipo e individuos son</Title>
@@ -140,9 +140,9 @@ const AboutPage = () => {
           <Title level={3}>Nuestra visión</Title>
           <Title id="tit" level={4}>Ofrecer un producto eficiente el cual otorgue beneficios a los usuarios en epocas de pandemia. Mejorar la union familiar dentro de a mayor canridad de hogares del país.</Title>
         </Col>
-        <Col span={3}></Col>
-        <Col span={9}>
-          <img id="im-vm" src={imgmv} alt="header" type="flex" align="middle" />
+        
+        <Col md={12} lg={12} xl={12} type="flex" align="middle"> 
+          <img id="im-vm" src={imgmv} alt="header"  />
         </Col>
       </Row>
     </div>
